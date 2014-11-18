@@ -26,10 +26,10 @@ Ui::winMain * winMain::getUi() const
 // Slots
 void winMain::on_bAddRemove_clicked()
 {
-    ((UI*)parentWidget())->getCAddRemove()->menuAddRemove();
+    //((UI*)parentWidget())->getCAddRemove()->menuAddRemove();
 }
 
 void winMain::on_bConfig_clicked()
 {
-   ((UI*)parentWidget())->getCConfig()->menuConfig();
+   //((UI*)parentWidget())->getCConfig()->menuConfig();
 }
