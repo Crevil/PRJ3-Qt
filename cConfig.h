@@ -9,7 +9,7 @@ public:
     cConfig();
 
     int menuConfig() const;
-    int setUI(UI * uiPtr);
+    int setUI(UI & ptr);
 private:
     UI * uiPtr_;
 };

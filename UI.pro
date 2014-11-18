@@ -18,7 +18,14 @@ SOURCES += main.cpp \
     UI.cpp \
     cConfig.cpp \
     cOnOff.cpp \
-    cAddRemove.cpp
+    cAddRemove.cpp \
+    winConfigPar.cpp \
+    winAddRemove.cpp \
+    winStatus.cpp \
+    winLog.cpp \
+    winOnOff.cpp \
+    cStatus.cpp \
+    cLogView.cpp
 
 HEADERS  += \
     winMain.h \
@@ -26,8 +33,20 @@ HEADERS  += \
     UI.h \
     cOnOff.h \
     cConfig.h \
-    cAddRemove.h
+    cAddRemove.h \
+    winOnOff.h \
+    winConfigPar.h \
+    winAddRemove.h \
+    winStatus.h \
+    winLog.h \
+    cStatus.h \
+    cLogView.h
 
 FORMS    += \
     winMain.ui \
-    winConfig.ui
+    winConfig.ui \
+    winOnOff.ui \
+    winConfigPar.ui \
+    winAddRemove.ui \
+    winStatus.ui \
+    winLog.ui

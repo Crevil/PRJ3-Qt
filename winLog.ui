@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>winLog</class>
+ <widget class="QWidget" name="winLog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>272</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>480</width>
+    <height>272</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>480</width>
+    <height>272</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="lHead">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>480</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Latin Modern Roman Caps</family>
+     <pointsize>33</pointsize>
+     <underline>false</underline>
+    </font>
+   </property>
+   <property name="text">
+    <string>Log</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>461</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tabAll">
+    <attribute name="title">
+     <string>Alle</string>
+    </attribute>
+    <widget class="QTableWidget" name="tAll">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>457</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>Temperatur</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Fugtighed</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Bevægelse</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sprinkler</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tabErr">
+    <attribute name="title">
+     <string>Fejl</string>
+    </attribute>
+    <widget class="QTableWidget" name="tErr">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>457</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>100</number>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Fejlkode</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Del</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Beskrivelse</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="bAbort">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>240</y>
+     <width>461</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tilbage</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

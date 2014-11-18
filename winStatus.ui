@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>winMain</class>
- <widget class="QWidget" name="winMain">
+ <class>winStatus</class>
+ <widget class="QWidget" name="winStatus">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,12 +9,6 @@
     <width>480</width>
     <height>272</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
@@ -29,13 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>EasyWater8000</string>
-  </property>
-  <property name="autoFillBackground">
-   <bool>false</bool>
-  </property>
-  <property name="locale">
-   <locale language="Danish" country="Denmark"/>
+   <string>Form</string>
   </property>
   <widget class="QLabel" name="lHead">
    <property name="enabled">
@@ -52,12 +40,12 @@
    <property name="font">
     <font>
      <family>Latin Modern Roman Caps</family>
-     <pointsize>30</pointsize>
+     <pointsize>33</pointsize>
      <underline>false</underline>
     </font>
    </property>
    <property name="text">
-    <string>EasyWater8000</string>
+    <string>Aktuel status</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -69,103 +57,144 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="bStatus">
+  <widget class="QPushButton" name="bAbort">
    <property name="geometry">
     <rect>
      <x>10</x>
+     <y>240</y>
+     <width>461</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tilbage</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lTemp">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
      <y>70</y>
-     <width>460</width>
-     <height>31</height>
+     <width>231</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Sans Serif</family>
-     <pointsize>15</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Vis Status</string>
+    <string>Øvre temperaturgrænse:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bOnOff">
+  <widget class="QLabel" name="lHumi">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>110</y>
-     <width>460</width>
-     <height>31</height>
+     <width>231</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Sans Serif</family>
-     <pointsize>15</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Aktiver eller deaktiver enhed</string>
+    <string>Nedre fugtighedsgrænse:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bAddRemove">
+  <widget class="QLabel" name="lMove">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>150</y>
-     <width>460</width>
-     <height>31</height>
+     <width>231</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Sans Serif</family>
-     <pointsize>15</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Tilføj eller fjern enhed</string>
+    <string>Bevægelse:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bConfig">
+  <widget class="QLabel" name="lSprink">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>190</y>
-     <width>460</width>
-     <height>31</height>
+     <width>231</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Sans Serif</family>
-     <pointsize>15</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>Konfigurer</string>
+    <string>Sprinkler aktivitet:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="bLog">
+  <widget class="QLineEdit" name="tTemp">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>460</width>
-     <height>31</height>
+     <x>260</x>
+     <y>60</y>
+     <width>113</width>
+     <height>30</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Sans Serif</family>
-     <pointsize>15</pointsize>
-    </font>
+   <property name="text">
+    <string>40 °C</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="tHumi">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>100</y>
+     <width>113</width>
+     <height>30</height>
+    </rect>
    </property>
    <property name="text">
-    <string>Log</string>
+    <string>20 %</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="tMove">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>140</y>
+     <width>113</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ingen</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="tSprink">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>180</y>
+     <width>113</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tændt</string>
    </property>
   </widget>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
 </ui>

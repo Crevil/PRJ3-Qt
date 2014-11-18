@@ -19,8 +19,11 @@ public:
     ~winMain();
 
 public slots:
+    void on_bStatus_clicked();
+    void on_bOnOff_clicked();
     void on_bAddRemove_clicked();
     void on_bConfig_clicked();
+    void on_bLog_clicked();
 
 private:
     Ui::winMain *ui_;

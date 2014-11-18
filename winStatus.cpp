@@ -1,15 +1,15 @@
-#include "winConfig.h"
-#include "ui_winConfig.h"
+#include "winStatus.h"
+#include "ui_winStatus.h"
 #include "UI.h"
 
-winConfig::winConfig(QWidget *parent) :
+winStatus::winStatus(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::winConfig)
+    ui(new Ui::winStatus)
 {
     ui->setupUi(this);
 }
 
-winConfig::~winConfig()
+winStatus::~winStatus()
 {
     delete ui;
 }
@@ -17,7 +17,7 @@ winConfig::~winConfig()
 //
 // Button events
 //
-void winConfig::on_bAbort_clicked()
+void winStatus::on_bAbort_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->showMain();

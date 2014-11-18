@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>winConfig</class>
- <widget class="QWidget" name="winConfig">
+ <class>winAddRemove</class>
+ <widget class="QWidget" name="winAddRemove">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -40,12 +40,12 @@
    <property name="font">
     <font>
      <family>Latin Modern Roman Caps</family>
-     <pointsize>30</pointsize>
+     <pointsize>27</pointsize>
      <underline>false</underline>
     </font>
    </property>
    <property name="text">
-    <string>Konfigurer Enhed</string>
+    <string>Tilføj og fjern enheder</string>
    </property>
    <property name="textFormat">
     <enum>Qt::AutoText</enum>
@@ -55,29 +55,6 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lDesc">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>231</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Vælg enhed som skal konfigureres:</string>
-   </property>
-  </widget>
-  <widget class="QListView" name="list">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>80</y>
-     <width>461</width>
-     <height>151</height>
-    </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="bAbort">
@@ -91,6 +68,42 @@
    </property>
    <property name="text">
     <string>Afbryd</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bAdd">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>221</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tilføj</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bRemove">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>60</y>
+     <width>221</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Fjern</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="list">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>461</width>
+     <height>141</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -10,8 +10,8 @@ int cConfig::menuConfig() const
     return 0;
 }
 
-int cConfig::setUI(UI *uiPtr)
+int cConfig::setUI(UI &ptr)
 {
-    uiPtr_ = uiPtr;
+    uiPtr_ = &ptr;
     return 0;
 }

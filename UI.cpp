@@ -1,10 +1,16 @@
 #include "UI.h"
+#include <iostream>
 
 UI::UI() : QMainWindow()
 {
     // Setup widget stack with all windows
     winStack_.addWidget(&winMainObj_);
+    winStack_.addWidget(&winStatusObj_);
+    winStack_.addWidget(&winAddRemoveObj_);
+    winStack_.addWidget(&winOnOffObj_);
     winStack_.addWidget(&winConfigObj_);
+    winStack_.addWidget(&winConfigParObj_);
+    winStack_.addWidget(&winLogObj_);
 
     // Set main as front
     winStack_.setCurrentWidget(&winMainObj_);
@@ -24,42 +30,108 @@ UI::~UI()
 
 }
 
+//
 // Setters and getters
-int UI::setCAddRemove(cAddRemove *ptr)
+//
+int UI::setCStatus(cStatus &ptr)
 {
-    cAddRemovePtr_ = ptr;
+    cStatusPtr_ = &ptr;
     return 0;
 }
-cAddRemove * UI::getCAddRemove()
+cStatus * UI::getCStatus() const
+{
+    return cStatusPtr_;
+}
+
+int UI::setCOnOff(cOnOff &ptr)
+{
+    cOnOffPtr_ = &ptr;
+    return 0;
+}
+cOnOff * UI::getCOnOff() const
+{
+    return cOnOffPtr_;
+}
+
+int UI::setCAddRemove(cAddRemove &ptr)
+{
+    cAddRemovePtr_ = &ptr;
+    return 0;
+}
+cAddRemove * UI::getCAddRemove() const
 {
     return cAddRemovePtr_;
 }
 
-int UI::setCConfig(cConfig *ptr)
+int UI::setCConfig(cConfig &ptr)
 {
-    cConfigPtr_ = ptr;
+    cConfigPtr_ = &ptr;
     return 0;
 }
-cConfig * UI::getCConfig()
+cConfig * UI::getCConfig() const
 {
     return cConfigPtr_;
 }
 
+int UI::setCLogView(cLogView &ptr)
+{
+    cLogViewPtr_ = &ptr;
+    return 0;
+}
+cLogView * UI::getCLogView() const
+{
+    return cLogViewPtr_;
+}
+
+
+// Utility getters / setters
 QStackedWidget * UI::getStack()
 {
     return &winStack_;
 }
 
+//
 // Show methods
+//
+int UI::showMain()
+{
+    winStack_.setCurrentWidget(&winMainObj_);
+    return 0;
+}
+
+int UI::showStatus()
+{
+    winStack_.setCurrentWidget(&winStatusObj_);
+    return 0;
+}
+
+int UI::showAddRemove()
+{
+    winStack_.setCurrentWidget(&winAddRemoveObj_);
+    return 0;
+}
+
+int UI::showOnOff()
+{
+    winStack_.setCurrentWidget(&winOnOffObj_);
+    return 0;
+}
+
 int UI::showConfig()
 {
     winStack_.setCurrentWidget(&winConfigObj_);
     return 0;
 }
 
-int UI::showMain()
+int UI::showParam()
 {
-    winStack_.setCurrentWidget(&winMainObj_);
+    winStack_.setCurrentWidget(&winConfigParObj_);
+    return 0;
+}
+
+int UI::showLog()
+{
+    winStack_.setCurrentWidget(&winLogObj_);
     return 0;
 }
 

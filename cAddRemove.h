@@ -9,7 +9,7 @@ public:
     cAddRemove();
 
     int menuAddRemove() const;
-    int setUI(UI * uiPtr);
+    int setUI(UI & ptr);
 
 private:
     UI * uiPtr_;
