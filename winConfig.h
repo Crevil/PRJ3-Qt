@@ -2,9 +2,9 @@
 #define WINCONFIG_H
 
 #include <QWidget>
-//#include "UI.h"
-#include "cAddRemove.h"
-#include "cConfig.h"
+
+// Forward declearation
+class UI;
 
 namespace Ui {
 class winConfig;

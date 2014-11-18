@@ -1,10 +1,9 @@
 #include <QApplication>
-#include "UI.h"    // UI controller
+//#include "UI.h"    // UI controller
 
 // Controllers
 #include "cAddRemove.h"
 #include "cConfig.h"
-
 
 
 int main(int argc, char *argv[])
@@ -19,6 +18,10 @@ int main(int argc, char *argv[])
     UI UIObj;
     UIObj.setCAddRemove(&cAddRemoveObj);
     UIObj.setCConfig(&cConfigObj);
+
+    cAddRemoveObj.setUI(&UIObj);
+    cConfigObj.setUI(&UIObj);
+
     UIObj.getCurrent()->show();
     return a.exec();
 }

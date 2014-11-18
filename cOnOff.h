@@ -5,8 +5,7 @@ class cOnOff
 {
 public:
     cOnOff();
-    // THIS IS A TEXT!
-// ill test again
+
 };
 
 #endif // CONOFF_H

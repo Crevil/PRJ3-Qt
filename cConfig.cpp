@@ -9,3 +9,8 @@ int cConfig::menuConfig() const
     std::cout << "menuConfig() called!" << std::endl;
     return 0;
 }
+
+int cConfig::setUI(UI *uiPtr)
+{
+    uiPtr_ = uiPtr;
+}

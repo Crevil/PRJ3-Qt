@@ -1,13 +1,16 @@
 #include "UI.h"
 
-UI::UI()
+UI::UI(QWidget * parent)
 {
-    current_ = &winMainObj_;
+    winMainObj_ = new winMain(this);
+    winConfigObj_ = new winConfig(this);
+    current_ = winMainObj_;
 }
 
 UI::~UI()
 {
-
+    delete winMainObj_;
+    delete winConfigObj_;
 }
 
 // Setters and getters
@@ -39,4 +42,12 @@ int UI::setCurrent(QWidget *ptr)
 QWidget * UI::getCurrent()
 {
     return current_;
+}
+
+// Show methods
+int UI::showConfig()
+{
+    current_ = winConfigObj_;
+    current_->show();
+    return 0;
 }

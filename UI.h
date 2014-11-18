@@ -7,24 +7,33 @@
 #include "cAddRemove.h"
 #include "cConfig.h"
 
-class UI
+// Forward decleration
+class cAddRemove;
+class cConfig;
+
+class UI : public QWidget
 {
+    Q_OBJECT
+
 public:
-    UI();
+    explicit UI(QWidget * parent = 0);
     ~UI();
 
+    // Setters / getters
     int setCAddRemove(cAddRemove *);
     cAddRemove * getCAddRemove();
     int setCConfig(cConfig *);
     cConfig * getCConfig();
-
     QWidget * getCurrent();
     int setCurrent(QWidget *);
 
+    // Show methods
+    int showConfig();
+
 private:
     // Window QWidgets
-    winConfig winConfigObj_;
-    winMain winMainObj_;
+    winConfig * winConfigObj_;
+    winMain * winMainObj_;
 
     QWidget * current_;
 

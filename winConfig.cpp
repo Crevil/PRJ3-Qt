@@ -1,5 +1,6 @@
 #include "winConfig.h"
 #include "ui_winConfig.h"
+#include "UI.h"
 
 winConfig::winConfig(QWidget *parent) :
     QWidget(parent),
@@ -15,5 +16,5 @@ winConfig::~winConfig()
 
 void winConfig::on_bAbort_clicked()
 {
-   // parent()-
+
 }
