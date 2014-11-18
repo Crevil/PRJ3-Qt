@@ -2,6 +2,8 @@
 #define UI_H
 
 #include <QWidget>
+#include <QStackedWidget>
+#include <QMainWindow>
 #include "winMain.h"
 #include "winConfig.h"
 #include "cAddRemove.h"
@@ -11,12 +13,10 @@
 class cAddRemove;
 class cConfig;
 
-class UI : public QWidget
+class UI : public QMainWindow
 {
-    Q_OBJECT
-
 public:
-    explicit UI(QWidget * parent = 0);
+    UI();
     ~UI();
 
     // Setters / getters
@@ -26,16 +26,19 @@ public:
     cConfig * getCConfig();
     QWidget * getCurrent();
     int setCurrent(QWidget *);
+    QStackedWidget * getStack();
 
     // Show methods
     int showConfig();
+    int showMain();
 
 private:
-    // Window QWidgets
-    winConfig * winConfigObj_;
-    winMain * winMainObj_;
+    // Stached widget to hold all windows
+    QStackedWidget winStack_;
 
-    QWidget * current_;
+    // Window QWidgets
+    winConfig winConfigObj_;
+    winMain winMainObj_;
 
     // Controller pointers
     cAddRemove * cAddRemovePtr_;

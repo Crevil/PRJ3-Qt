@@ -1,16 +1,17 @@
 #include "cConfig.h"
-#include <iostream>
+
 cConfig::cConfig()
 {
 }
 
 int cConfig::menuConfig() const
 {
-    std::cout << "menuConfig() called!" << std::endl;
+    uiPtr_->showConfig();
     return 0;
 }
 
 int cConfig::setUI(UI *uiPtr)
 {
     uiPtr_ = uiPtr;
+    return 0;
 }

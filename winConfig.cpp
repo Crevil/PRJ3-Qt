@@ -16,5 +16,6 @@ winConfig::~winConfig()
 
 void winConfig::on_bAbort_clicked()
 {
-
+    UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
+    ui->showMain();
 }

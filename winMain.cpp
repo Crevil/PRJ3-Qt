@@ -1,9 +1,6 @@
 #include "winMain.h"
 #include "ui_winMain.h"
 #include "UI.h"
-//#include "cAddRemove.h"
-//#include "cConfig.h"
-#include <iostream>
 
 winMain::winMain(QWidget *parent) :
     QWidget(parent),
@@ -20,10 +17,11 @@ winMain::~winMain()
 // Slots
 void winMain::on_bAddRemove_clicked()
 {
-    //parent_->getCAddRemove()->menuAddRemove();
+
 }
 
 void winMain::on_bConfig_clicked()
 {
-    //parent_->getCConfig()->menuConfig();
+    UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
+    ui->getCConfig()->menuConfig();
 }

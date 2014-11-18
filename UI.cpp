@@ -1,16 +1,27 @@
 #include "UI.h"
 
-UI::UI(QWidget * parent)
+UI::UI() : QMainWindow()
 {
-    winMainObj_ = new winMain(this);
-    winConfigObj_ = new winConfig(this);
-    current_ = winMainObj_;
+    // Setup widget stack with all windows
+    winStack_.addWidget(&winMainObj_);
+    winStack_.addWidget(&winConfigObj_);
+
+    // Set main as front
+    winStack_.setCurrentWidget(&winMainObj_);
+
+    // Fixed size and fullscreen for Devkit8000
+    winStack_.setFixedSize(480, 272);
+    setFixedSize(480, 272);
+    //setWindowFlags(Qt::FramelessWindowHint | Qt::CustomizeWindowHint); // Uncommect to make fullscreen
+
+    // Set central widget in MainWindow
+    setCentralWidget(&winStack_);
+
 }
 
 UI::~UI()
 {
-    delete winMainObj_;
-    delete winConfigObj_;
+
 }
 
 // Setters and getters
@@ -34,20 +45,21 @@ cConfig * UI::getCConfig()
     return cConfigPtr_;
 }
 
-int UI::setCurrent(QWidget *ptr)
+QStackedWidget * UI::getStack()
 {
-    current_ = ptr;
-    return 0;
-}
-QWidget * UI::getCurrent()
-{
-    return current_;
+    return &winStack_;
 }
 
 // Show methods
 int UI::showConfig()
 {
-    current_ = winConfigObj_;
-    current_->show();
+    winStack_.setCurrentWidget(&winConfigObj_);
     return 0;
 }
+
+int UI::showMain()
+{
+    winStack_.setCurrentWidget(&winMainObj_);
+    return 0;
+}
+
