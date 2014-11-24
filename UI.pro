@@ -11,6 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = PRJ3-GUI
 TEMPLATE = app
 
+target.path=/home/root
+
+INSTALLS+=target
+
 
 SOURCES += main.cpp \
     winMain.cpp \
@@ -40,13 +44,14 @@ HEADERS  += \
     winStatus.h \
     winLog.h \
     cStatus.h \
-    cLogView.h
+    cLogView.h \
+    winconfigpar2.h
 
 FORMS    += \
     winMain.ui \
     winConfig.ui \
     winOnOff.ui \
-    winConfigPar.ui \
     winAddRemove.ui \
     winStatus.ui \
-    winLog.ui
+    winLog.ui \
+    winConfigPar.ui

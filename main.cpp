@@ -39,6 +39,6 @@ int main(int argc, char *argv[])
 
 
     // Show GUI
-    UIObj.show();
+    UIObj.showFullScreen();
     return a.exec();
 }
