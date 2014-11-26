@@ -44,8 +44,7 @@ HEADERS  += \
     winStatus.h \
     winLog.h \
     cStatus.h \
-    cLogView.h \
-    winconfigpar2.h
+    cLogView.h
 
 FORMS    += \
     winMain.ui \

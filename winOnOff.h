@@ -2,6 +2,7 @@
 #define WINONOFF_H
 
 #include <QWidget>
+#include <QListWidget>
 
 namespace Ui {
 class winOnOff;
@@ -14,6 +15,8 @@ class winOnOff : public QWidget
 public:
     explicit winOnOff(QWidget *parent = 0);
     ~winOnOff();
+
+    QListWidget * getList();
 
 public slots:
     void on_bOn_clicked();

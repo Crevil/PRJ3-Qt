@@ -46,6 +46,9 @@ public:
     int setCLogView(cLogView &);
     cLogView * getCLogView() const;
 
+    // window getter
+    winOnOff * getWinOnOff();
+
     // Utility setters / getters
     int setCurrent(QWidget *);
     QWidget * getCurrent();

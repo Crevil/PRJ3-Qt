@@ -53,6 +53,11 @@ cOnOff * UI::getCOnOff() const
     return cOnOffPtr_;
 }
 
+winOnOff * UI::getWinOnOff()
+{
+    return &winOnOffObj_;
+}
+
 int UI::setCAddRemove(cAddRemove &ptr)
 {
     cAddRemovePtr_ = &ptr;
