@@ -6,10 +6,17 @@ cOnOff::cOnOff()
 
 int cOnOff::menuOnOff() const
 {
+    // unitDB_->getUnits();
+
     QListWidget * myList = uiPtr_->getWinOnOff()->getList();
-    QStringList stringList;
-    stringList << "bane 1" << "deaktiv" ;
-    myList->addItems(stringList);
+
+    for(int i = 1; i < 5; i++)
+    {
+        QString string = QString::number(i);
+        string.prepend("bane ");
+        string.append("  [Deaktiv]");
+        myList->addItem( string);
+    }
     uiPtr_->showOnOff();
     return 0;
 }
@@ -24,11 +31,40 @@ int cOnOff::menuAbort() const
 int cOnOff::On() const
 {
     QListWidget * myList = uiPtr_->getWinOnOff()->getList();
-    QListWidgetItem * item = myList->currentItem();
+
+    int row = myList->currentRow();
+
+   // if(SpiPtr_->activate( row + 1) == 0)
+    //{
+        QListWidgetItem * item = myList->item(row);
+
+        QString string = QString::number(row +1);
+        string.prepend("bane ");
+        string.append("  [Aktiv]");
+        item->setText(string);
+   // }
+
+
+
+
 }
 
 int cOnOff::Off() const
 {
+    QListWidget * myList = uiPtr_->getWinOnOff()->getList();
+
+    int row = myList->currentRow();
+
+      // if(SpiPtr_->deactivate( row + 1) == 0)
+   // {
+        QListWidgetItem * item = myList->item(row);
+
+        QString string = QString::number(row +1);
+        string.prepend("bane ");
+        string.append("  [Deaktiv]");
+        item->setText(string);
+   // }
+
 
 }
 
