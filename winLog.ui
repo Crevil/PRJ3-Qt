@@ -82,6 +82,19 @@
        <height>141</height>
       </rect>
      </property>
+     <property name="rowCount">
+      <number>10</number>
+     </property>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
      <column>
       <property name="text">
        <string>Temperatur</string>

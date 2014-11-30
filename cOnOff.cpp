@@ -34,7 +34,9 @@ int cOnOff::On() const
 
     int row = myList->currentRow();
 
-   // if(SpiPtr_->activate( row + 1) == 0)
+    //int error = SPI_->activate( row + 1);
+
+   // if(error == 0)
     //{
         QListWidgetItem * item = myList->item(row);
 
@@ -55,7 +57,9 @@ int cOnOff::Off() const
 
     int row = myList->currentRow();
 
-      // if(SpiPtr_->deactivate( row + 1) == 0)
+//    int error = SPI_->deactivate( row + 1);
+
+      // if(error == 0)
    // {
         QListWidgetItem * item = myList->item(row);
 

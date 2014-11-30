@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 3.2.0, 2014-11-29T14:36:52. -->
+<!-- Written by QtCreator 3.2.0, 2014-11-30T10:36:26. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -204,8 +204,8 @@
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.DirectUploadStep</value>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedFiles">
-       <value type="QString">/home/stud/PROJEKT/Implementering/SW/build-UI-angstrom-Debug/UI</value>
        <value type="QString">/home/stud/PROJEKT/Implementering/SW/build-UI-angstrom-Debug/PRJ3-GUI</value>
+       <value type="QString">/home/stud/PROJEKT/Implementering/SW/build-UI-angstrom-Debug/UI</value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedHosts">
        <value type="QString">10.9.8.2</value>
@@ -220,8 +220,8 @@
        <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedTimes">
+       <value type="QDateTime">2014-11-30T10:30:56</value>
        <value type="QDateTime">2014-11-24T16:52:03</value>
-       <value type="QDateTime">2014-11-24T17:45:22</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>

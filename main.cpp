@@ -20,6 +20,9 @@ int main(int argc, char *argv[])
     cConfig cConfigObj;
     cLogView cLogViewObj;
 
+    // Create log
+    log logObj;
+
     // Create UI
     UI UIObj;
 
@@ -35,7 +38,7 @@ int main(int argc, char *argv[])
     cOnOffObj.setUI(UIObj);
     cAddRemoveObj.setUI(UIObj);
     cConfigObj.setUI(UIObj);
-    cLogViewObj.setUI(UIObj);
+    cLogViewObj.setUI(UIObj, logObj);
 
 
     // Show GUI

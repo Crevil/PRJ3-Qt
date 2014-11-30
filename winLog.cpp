@@ -14,6 +14,11 @@ winLog::~winLog()
     delete ui;
 }
 
+QTableWidget * winLog::getTable()
+{
+    return ui->tAll;
+}
+
 void winLog::on_bAbort_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();

@@ -2,6 +2,7 @@
 #define WINLOG_H
 
 #include <QWidget>
+#include <QTableWidget>
 
 namespace Ui {
 class winLog;
@@ -14,6 +15,8 @@ class winLog : public QWidget
 public:
     explicit winLog(QWidget *parent = 0);
     ~winLog();
+
+    QTableWidget * getTable();
 
 public slots:
     void on_bAbort_clicked();

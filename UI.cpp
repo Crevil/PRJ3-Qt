@@ -58,6 +58,11 @@ winOnOff * UI::getWinOnOff()
     return &winOnOffObj_;
 }
 
+winLog * UI::getWinLog()
+{
+    return &winLogObj_;
+}
+
 int UI::setCAddRemove(cAddRemove &ptr)
 {
     cAddRemovePtr_ = &ptr;

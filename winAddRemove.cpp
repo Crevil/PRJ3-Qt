@@ -31,5 +31,5 @@ void winAddRemove::on_bRemove_clicked()
 void winAddRemove::on_bAbort_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
-    ui->showMain();
+    ui->getCAddRemove()->menuAbort();
 }

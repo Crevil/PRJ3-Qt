@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     winLog.cpp \
     winOnOff.cpp \
     cStatus.cpp \
-    cLogView.cpp
+    cLogView.cpp \
+    log.cpp
 
 HEADERS  += \
     winMain.h \
@@ -44,7 +45,8 @@ HEADERS  += \
     winStatus.h \
     winLog.h \
     cStatus.h \
-    cLogView.h
+    cLogView.h \
+    log.h
 
 FORMS    += \
     winMain.ui \

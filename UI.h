@@ -48,6 +48,7 @@ public:
 
     // window getter
     winOnOff * getWinOnOff();
+    winLog * getWinLog();
 
     // Utility setters / getters
     int setCurrent(QWidget *);

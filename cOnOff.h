@@ -18,6 +18,8 @@ public:
     int setUI(UI & ptr);
 private:
     UI * uiPtr_;
+    //UnitDB * unitDB_;
+    //SPI_api * SPI_;
 };
 
 #endif // CONOFF_H
