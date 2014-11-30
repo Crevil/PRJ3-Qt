@@ -14,6 +14,11 @@ winAddRemove::~winAddRemove()
     delete ui;
 }
 
+QListWidget * winAddRemove::getList()
+{
+    return ui->list;
+}
+
 //
 // Button events
 //
@@ -25,7 +30,8 @@ void winAddRemove::on_bAdd_clicked()
 
 void winAddRemove::on_bRemove_clicked()
 {
-
+    UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
+    ui->getCAddRemove()->remove();
 }
 
 void winAddRemove::on_bAbort_clicked()

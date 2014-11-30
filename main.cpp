@@ -6,6 +6,7 @@
 #include "cOnOff.h"
 #include "cAddRemove.h"
 #include "cConfig.h"
+#include "unitDB.h"
 
 
 int main(int argc, char *argv[])
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     cAddRemove cAddRemoveObj;
     cConfig cConfigObj;
     cLogView cLogViewObj;
+    unitDB unitDBObj;
 
     // Create log
     log logObj;
@@ -36,7 +38,7 @@ int main(int argc, char *argv[])
     // Set association pointers in controller objects
     cStatusObj.setUI(UIObj);
     cOnOffObj.setUI(UIObj);
-    cAddRemoveObj.setUI(UIObj);
+    cAddRemoveObj.setUI(UIObj, unitDBObj);
     cConfigObj.setUI(UIObj);
     cLogViewObj.setUI(UIObj, logObj);
 

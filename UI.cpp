@@ -63,6 +63,11 @@ winLog * UI::getWinLog()
     return &winLogObj_;
 }
 
+winAddRemove * UI::getWinAddRemove()
+{
+    return &winAddRemoveObj_;
+}
+
 int UI::setCAddRemove(cAddRemove &ptr)
 {
     cAddRemovePtr_ = &ptr;

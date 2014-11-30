@@ -2,6 +2,7 @@
 #define WINADDREMOVE_H
 
 #include <QWidget>
+#include <QListWidget>
 
 namespace Ui {
 class winAddRemove;
@@ -14,6 +15,8 @@ class winAddRemove : public QWidget
 public:
     explicit winAddRemove(QWidget *parent = 0);
     ~winAddRemove();
+
+    QListWidget * getList();
 
 public slots:
     void on_bAdd_clicked();

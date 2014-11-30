@@ -30,7 +30,8 @@ SOURCES += main.cpp \
     winOnOff.cpp \
     cStatus.cpp \
     cLogView.cpp \
-    log.cpp
+    log.cpp \
+    unitDB.cpp
 
 HEADERS  += \
     winMain.h \
@@ -46,7 +47,8 @@ HEADERS  += \
     winLog.h \
     cStatus.h \
     cLogView.h \
-    log.h
+    log.h \
+    unitDB.h
 
 FORMS    += \
     winMain.ui \
