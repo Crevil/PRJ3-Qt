@@ -68,6 +68,11 @@ winAddRemove * UI::getWinAddRemove()
     return &winAddRemoveObj_;
 }
 
+winConfigPar * UI::getWinConfigPar()
+{
+    return &winConfigParObj_;
+}
+
 int UI::setCAddRemove(cAddRemove &ptr)
 {
     cAddRemovePtr_ = &ptr;

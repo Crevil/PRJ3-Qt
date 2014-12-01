@@ -1,18 +1,30 @@
 #include "unitDB.h"
 #include <iostream>
 
-unitDB::unitDB()
+unitDB::unitDB() : unitDB_(new QVector<QVector<QString > >)
 {
-    unitDB_ = new QVector<QVector<QString > >;
+    QString zero = QString::number(0);
+    for(int i = 18; i > 0; i--)
+    {
+        QString init = QString::number(i);
+        QVector<QString> temp;
+        temp.push_front(init);
+        temp.push_back(zero);
+        temp.push_back(zero);
+        temp.push_back("Deaktiv");
+        unitDB_->push_front(temp);
+    }
 
     // TEST PURPOSE
     QVector<QString> temp;
-    QString str = QString::number(1);
-    str.prepend("bane ");
-    str.append("  [Deaktiv]");
-    temp.push_front(str);
+    QString str1 = QString::number(15);
+    QString str2 = QString::number(52);
+    QString str3 = "Aktiv";
 
-    unitDB_->push_front(temp);
+    int b = 1;
+    unitDB_->operator[](b).operator[](1) = str1;
+    unitDB_->operator[](b).operator[](2) = str2;
+    unitDB_->operator[](b).operator[](3) = str3;
 }
 
 unitDB::~unitDB()
@@ -20,29 +32,23 @@ unitDB::~unitDB()
     delete unitDB_;
 }
 
-int unitDB::getUnits( QVector<QVector<QString> > * saveHere )
+int unitDB::getUnits( QVector< QVector< QString> > * saveHere )
 {
     *saveHere = *unitDB_;
 
     return 0;
 }
 
-int unitDB::saveUnit( QString indikator)
+int unitDB::saveUnit( QVector<QString> temp)
 {
+    QString str = temp.at(0);
 
-    // tjek om den findes
-    for(int i = 0; i < unitDB_->size(); i++)
-    {
-        int position = unitDB_->at(i).at(0).indexOf(indikator);
-        std::cout << indikator.toAscii().data() << " already found at: " << position << std::endl;
-    }
+    int index = str.toInt();
+    index = index -1;
 
-    indikator.prepend("bane ");
-    indikator.append("  [Deaktiv]");
+    unitDB_->operator[](index).operator[](1) = temp.at(1);
+    unitDB_->operator[](index).operator[](2)= temp.at(2);
 
-    QVector<QString> temp;
+    return 0;
 
-    temp.push_front(indikator);
-
-    unitDB_->push_back(temp);
 }

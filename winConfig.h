@@ -2,6 +2,7 @@
 #define WINCONFIG_H
 
 #include <QWidget>
+#include <QTableWidget>
 
 // Forward declearation
 class UI;
@@ -17,6 +18,8 @@ class winConfig : public QWidget
 public:
     explicit winConfig(QWidget *parent = 0);
     ~winConfig();
+
+    QTableWidget * getTable();
 
 public slots:
     void on_bAbort_clicked();

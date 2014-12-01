@@ -9,18 +9,49 @@ cAddRemove::cAddRemove()
 
 int cAddRemove::menuAddRemove() const
 {
-    QListWidget * myList = uiPtr_->getWinAddRemove()->getList();
+    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
 
-    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString > >;
-
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
     unitsPtr_->getUnits( uPtr );
 
-    for(int i = 0; i < uPtr->size(); ++i)
-    {
-        QString string = uPtr->at(i).at(0);
-        myList->addItem( string );
-    }
 
+
+    QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
+
+    QString zero = QString::number(0);
+
+    for(int i = 0; i < uPtr->size(); i++)
+    {
+        allUnits->push_front(new QVector<QTableWidgetItem *>);
+
+        QVector<QString> vec = uPtr->at(i);
+
+        if(vec.at(1) != zero && vec.at(2)  != zero )
+        {
+
+
+            for(int t = 0; t < 3; t++)
+            {
+
+                QVector<QTableWidgetItem *> * uItem = allUnits->at(i);
+
+                uItem->push_front(new QTableWidgetItem());
+                QString string = vec.at(t);
+
+                if(t == 2)
+                    string.append(" %");
+
+                if(t == 1)
+                    string.append(" C");
+
+                // doesnt work ( °C )
+
+                uItem->at(0)->setText(string);
+
+                myTable->setItem(i, t, uItem->at(0));
+            }
+        }
+    }
     uiPtr_->showAddRemove();
     return 0;
 }
@@ -34,24 +65,108 @@ int cAddRemove::setUI(UI & ptr, unitDB & unitPtr)
 
 int cAddRemove::menuAbort() const
 {
-    QListWidget * myList = uiPtr_->getWinAddRemove()->getList();
-    myList->clear();
+    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
+    myTable->clear();
     uiPtr_->showMain();
+
+    return 0;
 }
 
 int cAddRemove::remove()
 {
-    QListWidget * myList = uiPtr_->getWinAddRemove()->getList();
+    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
 
-    int row = myList->currentRow();
+    int row = myTable->currentRow();
 
-    QListWidgetItem * item = myList->item(row);
-    delete item;
+    for(int i = 0; i < 3; i++)
+    {
+        QTableWidgetItem * item = myTable->item(row, i);
+        delete item;
+    }
+
+    return 0;
 }
 
 int cAddRemove::add()
 {
-    QListWidget * myList = uiPtr_->getWinAddRemove()->getList();
+    QComboBox* banePtr = uiPtr_->getWinConfigPar()->getBane();
+    QSpinBox * tempPtr = uiPtr_->getWinConfigPar()->getTemp();
+    QSpinBox * humiPtr = uiPtr_->getWinConfigPar()->getHumi();
+
+    QString string = banePtr->currentText();
+
+    // VERIFY
+//    int verify = SPI_->verify( string.toInt());
+//    if( verify != 0);
+//    {
+//        uiPtr_->showAddRemove();
+//        return 0;
+//    }
+
+    int temp = tempPtr->value();
+    int humi = humiPtr->value();
+
+    // CONFIGURATING UNIT
+    //int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
+    //    if( config != 0);
+    //    {
+    //        uiPtr_->showAddRemove();
+    //        return 0;
+    //    }
 
 
+
+
+    QVector<QString> vec;
+
+    vec.push_front(string);
+    vec.push_back(QString::number(temp));
+    vec.push_back(QString::number(humi));
+
+    unitsPtr_->saveUnit(vec);
+
+    //*************** DISPLAYING UPDATED TABLE *************//
+
+    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
+
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+    unitsPtr_->getUnits( uPtr );
+
+    // kontroltal
+    QString zero = QString::number(0);
+
+    QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
+
+    for(int i = 0; i < uPtr->size(); i++)
+    {
+        allUnits->push_front(new QVector<QTableWidgetItem *>);
+
+        QVector<QString> vec = uPtr->at(i);
+
+        if(vec.at(1) != zero && vec.at(2)  != zero )
+        {
+            for(int t = 0; t < 3; t++)
+            {
+
+                QVector<QTableWidgetItem *> * uItem = allUnits->at(i);
+                uItem->push_front(new QTableWidgetItem());
+                QString string = vec.at(t);
+
+                if(t == 2)
+                    string.append(" %");
+
+                if(t == 1)
+                    string.append(" C");
+
+                // doesnt work ( °C )
+
+                uItem->at(0)->setText(string);
+
+                myTable->setItem(i, t, uItem->at(0));
+            }
+        }
+    }
+    uiPtr_->showAddRemove();
+    return 0;
 }
+

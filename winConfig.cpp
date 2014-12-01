@@ -14,6 +14,10 @@ winConfig::~winConfig()
     delete ui;
 }
 
+QTableWidget * winConfig::getTable()
+{
+    return ui->tUnits;
+}
 //
 // Button events
 //

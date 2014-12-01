@@ -20,6 +20,8 @@ int main(int argc, char *argv[])
     cAddRemove cAddRemoveObj;
     cConfig cConfigObj;
     cLogView cLogViewObj;
+
+    // Create unitDB
     unitDB unitDBObj;
 
     // Create log
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
 
     // Set association pointers in controller objects
     cStatusObj.setUI(UIObj);
-    cOnOffObj.setUI(UIObj);
+    cOnOffObj.setUI(UIObj, unitDBObj);
     cAddRemoveObj.setUI(UIObj, unitDBObj);
     cConfigObj.setUI(UIObj);
     cLogViewObj.setUI(UIObj, logObj);

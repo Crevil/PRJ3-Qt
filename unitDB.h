@@ -10,8 +10,8 @@ public:
     unitDB();
     ~unitDB();
 
-    int getUnits( QVector<QVector<QString > > * units);
-    int saveUnit( QString );
+    int getUnits( QVector<QVector<QString> > * units);
+    int saveUnit( QVector<QString> temp );
 
 private:
     QVector<QVector<QString > > * unitDB_;

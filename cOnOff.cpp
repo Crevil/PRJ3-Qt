@@ -26,6 +26,8 @@ int cOnOff::menuAbort() const
     QListWidget * myList = uiPtr_->getWinOnOff()->getList();
     myList->clear();
     uiPtr_->showMain();
+
+    return 0;
 }
 
 int cOnOff::On() const
@@ -47,7 +49,7 @@ int cOnOff::On() const
    // }
 
 
-
+    return 0;
 
 }
 
@@ -57,9 +59,10 @@ int cOnOff::Off() const
 
     int row = myList->currentRow();
 
-//    int error = SPI_->deactivate( row + 1);
+    // ACTIVATING
+    //int error = SPI_->deactivate( row + 1);
 
-      // if(error == 0)
+   // if(error == 0)
    // {
         QListWidgetItem * item = myList->item(row);
 
@@ -69,11 +72,12 @@ int cOnOff::Off() const
         item->setText(string);
    // }
 
-
+    return 0;
 }
 
-int cOnOff::setUI(UI &ptr)
+int cOnOff::setUI(UI &ptr, unitDB & unitPtr)
 {
+    unitDB_ = &unitPtr;
     uiPtr_ = &ptr;
     return 0;
 }

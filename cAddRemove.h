@@ -7,7 +7,11 @@
 #include "unitDB.h"
 #include <QVector>
 #include <QString>
-#include <QListWidget>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+//#include "SPI_api.h"
 
 class cAddRemove
 {
@@ -24,6 +28,7 @@ public:
 private:
     UI * uiPtr_;
     unitDB * unitsPtr_;
+    //SPI_api * SPI_;
 };
 
 #endif // CADDREMOVE_H

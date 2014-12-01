@@ -14,9 +14,9 @@ winAddRemove::~winAddRemove()
     delete ui;
 }
 
-QListWidget * winAddRemove::getList()
+QTableWidget * winAddRemove::getTable()
 {
-    return ui->list;
+    return ui->tUnits;
 }
 
 //

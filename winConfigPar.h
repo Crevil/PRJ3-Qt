@@ -2,6 +2,8 @@
 #define WINCONFIGPAR_H
 
 #include <QWidget>
+#include <QComboBox>
+#include <QSpinBox>
 
 namespace Ui {
 class winConfigPar;
@@ -14,6 +16,10 @@ class winConfigPar : public QWidget
 public:
     explicit winConfigPar(QWidget *parent = 0);
     ~winConfigPar();
+
+    QComboBox * getBane();
+    QSpinBox * getTemp();
+    QSpinBox * getHumi();
 
 public slots:
     void on_bAbort_clicked();

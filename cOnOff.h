@@ -2,9 +2,11 @@
 #define CONOFF_H
 
 #include "UI.h"
+#include "unitDB.h"
 #include <QString>
 #include <QListWidgetItem>
 #include <QStringList>
+//#include "SPI_api.h"
 
 class cOnOff
 {
@@ -15,10 +17,10 @@ public:
     int menuAbort() const;
     int On() const;
     int Off() const;
-    int setUI(UI & ptr);
+    int setUI(UI & ptr, unitDB & unitPtr);
 private:
     UI * uiPtr_;
-    //UnitDB * unitDB_;
+    unitDB * unitDB_;
     //SPI_api * SPI_;
 };
 
