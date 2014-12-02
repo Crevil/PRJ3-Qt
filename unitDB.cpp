@@ -4,13 +4,14 @@
 unitDB::unitDB() : unitDB_(new QVector<QVector<QString > >)
 {
     QString zero = QString::number(0);
+    QString minus = QString::number(-1);
     for(int i = 18; i > 0; i--)
     {
         QString init = QString::number(i);
         QVector<QString> temp;
         temp.push_front(init);
-        temp.push_back(zero);
-        temp.push_back(zero);
+        temp.push_back(minus);
+        temp.push_back(minus);
         temp.push_back("Deaktiv");
         unitDB_->push_front(temp);
     }
@@ -44,8 +45,7 @@ int unitDB::saveUnit( QVector<QString> temp)
     QString str = temp.at(0);
 
     int index = str.toInt();
-    index = index -1;
-
+    index = (index - 1);
     unitDB_->operator[](index).operator[](1) = temp.at(1);
     unitDB_->operator[](index).operator[](2)= temp.at(2);
 

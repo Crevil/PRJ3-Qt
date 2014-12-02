@@ -19,16 +19,17 @@ int cAddRemove::menuAddRemove() const
     QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
 
     QString zero = QString::number(0);
+    QString minus = QString::number(-1);
 
+    int count = 0;
     for(int i = 0; i < uPtr->size(); i++)
     {
         allUnits->push_front(new QVector<QTableWidgetItem *>);
 
         QVector<QString> vec = uPtr->at(i);
 
-        if(vec.at(1) != zero && vec.at(2)  != zero )
+        if(vec.at(2)  != minus )
         {
-
 
             for(int t = 0; t < 3; t++)
             {
@@ -48,16 +49,19 @@ int cAddRemove::menuAddRemove() const
 
                 uItem->at(0)->setText(string);
 
-                myTable->setItem(i, t, uItem->at(0));
+                myTable->setItem(count, t, uItem->at(0));
             }
+
+            count++;
         }
     }
     uiPtr_->showAddRemove();
     return 0;
 }
 
-int cAddRemove::setUI(UI & ptr, unitDB & unitPtr)
+int cAddRemove::setUI(UI & ptr, unitDB & unitPtr, SPI_api & spiPtr)
 {
+    SPI_ = &spiPtr;
     unitsPtr_ = &unitPtr;
     uiPtr_ = &ptr;
     return 0;
@@ -97,8 +101,9 @@ int cAddRemove::add()
 
     // VERIFY
 //    int verify = SPI_->verify( string.toInt());
-//    if( verify != 0);
+//    if( verify != 0)
 //    {
+//        qDebug("VERIFY ERROR");
 //        uiPtr_->showAddRemove();
 //        return 0;
 //    }
@@ -107,12 +112,13 @@ int cAddRemove::add()
     int humi = humiPtr->value();
 
     // CONFIGURATING UNIT
-    //int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
-    //    if( config != 0);
-    //    {
-    //        uiPtr_->showAddRemove();
-    //        return 0;
-    //    }
+//    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
+//        if( config != 0)
+//        {
+//            qDebug("CONFIG ERROR");
+//            uiPtr_->showAddRemove();
+//            return 0;
+//        }
 
 
 
@@ -122,51 +128,55 @@ int cAddRemove::add()
     vec.push_front(string);
     vec.push_back(QString::number(temp));
     vec.push_back(QString::number(humi));
-
     unitsPtr_->saveUnit(vec);
 
     //*************** DISPLAYING UPDATED TABLE *************//
 
-    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
+//    QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
 
-    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
-    unitsPtr_->getUnits( uPtr );
+//    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+//    unitsPtr_->getUnits( uPtr );
 
-    // kontroltal
-    QString zero = QString::number(0);
+//    // kontroltal
+//    QString zero = QString::number(0);
+//    int count = 0;
+//    QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
 
-    QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
+//    for(int i = 0; i < uPtr->size(); i++)
+//    {
+//        allUnits->push_front(new QVector<QTableWidgetItem *>);
 
-    for(int i = 0; i < uPtr->size(); i++)
-    {
-        allUnits->push_front(new QVector<QTableWidgetItem *>);
+//        QVector<QString> vec = uPtr->at(i);
 
-        QVector<QString> vec = uPtr->at(i);
+//        if(vec.at(1) != zero && vec.at(2)  != zero )
+//        {
+//            count ++;
+//            for(int t = 0; t < 3; t++)
+//            {
 
-        if(vec.at(1) != zero && vec.at(2)  != zero )
-        {
-            for(int t = 0; t < 3; t++)
-            {
+//                QVector<QTableWidgetItem *> * uItem = allUnits->at(i);
+//                uItem->push_front(new QTableWidgetItem());
+//                QString string = vec.at(t);
 
-                QVector<QTableWidgetItem *> * uItem = allUnits->at(i);
-                uItem->push_front(new QTableWidgetItem());
-                QString string = vec.at(t);
+//                if(t == 2)
+//                    string.append(" %");
 
-                if(t == 2)
-                    string.append(" %");
+//                if(t == 1)
+//                    string.append(" C");
 
-                if(t == 1)
-                    string.append(" C");
+//                // doesnt work ( °C )
 
-                // doesnt work ( °C )
+//                uItem->at(0)->setText(string);
 
-                uItem->at(0)->setText(string);
+//                myTable->setItem(count, t, uItem->at(0));
+//            }
+//        }
+//    }
 
-                myTable->setItem(i, t, uItem->at(0));
-            }
-        }
-    }
-    uiPtr_->showAddRemove();
+//    uiPtr_->showAddRemove();
+//    return 0;
+
+    this->menuAddRemove();
     return 0;
 }
 

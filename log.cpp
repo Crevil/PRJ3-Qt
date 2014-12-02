@@ -13,8 +13,6 @@ log::log() : log_(new QVector<QVector<QString> >)
     pushThis.push_front(QString::number(54));
     pushThis.push_front(QString::number(22.1));
 
-    latest_ = pushThis;
-
     log_->push_front(pushThis);
 
     pushThis.push_front(QString::number(1));
@@ -22,12 +20,14 @@ log::log() : log_(new QVector<QVector<QString> >)
     pushThis.push_front(QString::number(89));
     pushThis.push_front(QString::number(32.1));
 
+    latest_ = pushThis;
     log_->push_front(pushThis);
 }
 
 int log::saveLog( QVector<QString> saveThis)
 {
         log_->push_front(saveThis);
+        latest_ = saveThis;
 }
 
 int log::getLog( QVector<QVector<QString> > * saveHere )

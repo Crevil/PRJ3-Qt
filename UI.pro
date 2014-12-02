@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     cLogView.cpp \
     log.cpp \
     unitDB.cpp \
-    cLoadData.cpp
+    cLoadData.cpp \
+    SPI_api.cpp
 
 HEADERS  += \
     winMain.h \
@@ -50,7 +51,8 @@ HEADERS  += \
     cLogView.h \
     log.h \
     unitDB.h \
-    cLoadData.h
+    cLoadData.h \
+    SPI_api.h
 
 FORMS    += \
     winMain.ui \

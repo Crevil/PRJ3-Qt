@@ -6,7 +6,7 @@
 #include <QString>
 #include <QListWidgetItem>
 #include <QStringList>
-//#include "SPI_api.h"
+#include "SPI_api.h"
 
 class cOnOff
 {
@@ -17,11 +17,11 @@ public:
     int menuAbort() const;
     int On() const;
     int Off() const;
-    int setUI(UI & ptr, unitDB & unitPtr);
+    int setUI(UI & ptr, unitDB & unitPtr, SPI_api & spiPtr);
 private:
     UI * uiPtr_;
     unitDB * unitDB_;
-    //SPI_api * SPI_;
+    SPI_api * SPI_;
 };
 
 #endif // CONOFF_H

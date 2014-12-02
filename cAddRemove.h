@@ -11,7 +11,7 @@
 #include <QSpinBox>
 #include <QTableWidget>
 #include <QTableWidgetItem>
-//#include "SPI_api.h"
+#include "SPI_api.h"
 
 class cAddRemove
 {
@@ -20,7 +20,7 @@ public:
 
     int menuAddRemove() const;
     int menuAbort() const;
-    int setUI(UI & ptr, unitDB & ptr2);
+    int setUI(UI & uiptr, unitDB & unitPtr, SPI_api & spiPtr);
 
     int remove();
     int add();
@@ -28,7 +28,7 @@ public:
 private:
     UI * uiPtr_;
     unitDB * unitsPtr_;
-    //SPI_api * SPI_;
+    SPI_api * SPI_;
 };
 
 #endif // CADDREMOVE_H

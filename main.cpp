@@ -1,5 +1,7 @@
 #include <QApplication>
 #include <QThread>
+#include <QtDebug>
+
 
 //#include "UI.h"    // UI controller
 
@@ -10,8 +12,12 @@
 #include "cConfig.h"
 #include "cLoadData.h"
 
+// SPI kommunikation
+#include "SPI_api.h"
+
 // Domains
 #include "unitDB.h"
+#include "log.h"
 
 
 int main(int argc, char *argv[])
@@ -36,6 +42,9 @@ int main(int argc, char *argv[])
     unitDB unitDBObj;   // unitDB
     log logObj;         // log
 
+    // Create SPI class
+    SPI_api spiObj;
+
 
     UI UIObj;
 
@@ -48,8 +57,8 @@ int main(int argc, char *argv[])
 
     // Set association pointers in controller objects
     cStatusObj.setUI(UIObj);
-    cOnOffObj.setUI(UIObj, unitDBObj);
-    cAddRemoveObj.setUI(UIObj, unitDBObj);
+    cOnOffObj.setUI(UIObj, unitDBObj, spiObj);
+    cAddRemoveObj.setUI(UIObj, unitDBObj, spiObj);
     cConfigObj.setUI(UIObj);
     cLogViewObj.setUI(UIObj, logObj);
 

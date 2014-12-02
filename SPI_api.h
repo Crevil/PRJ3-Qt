@@ -6,6 +6,8 @@
 * Author: Mick Kirkegaard & Poul Overgaard
 */
 
+#pragma once
+
 #include <vector>
 #include <iostream>
 #include <string>

@@ -36,17 +36,17 @@ int cOnOff::On() const
 
     int row = myList->currentRow();
 
-    //int error = SPI_->activate( row + 1);
+    int error = SPI_->activate( row + 1);
 
-   // if(error == 0)
-    //{
+    if(error == 0)
+    {
         QListWidgetItem * item = myList->item(row);
 
         QString string = QString::number(row +1);
         string.prepend("bane ");
         string.append("  [Aktiv]");
         item->setText(string);
-   // }
+    }
 
 
     return 0;
@@ -60,23 +60,24 @@ int cOnOff::Off() const
     int row = myList->currentRow();
 
     // ACTIVATING
-    //int error = SPI_->deactivate( row + 1);
+    int error = SPI_->deactivate( row + 1);
 
-   // if(error == 0)
-   // {
+    if(error == 0)
+    {
         QListWidgetItem * item = myList->item(row);
 
         QString string = QString::number(row +1);
         string.prepend("bane ");
         string.append("  [Deaktiv]");
         item->setText(string);
-   // }
+    }
 
     return 0;
 }
 
-int cOnOff::setUI(UI &ptr, unitDB & unitPtr)
+int cOnOff::setUI(UI &ptr, unitDB & unitPtr, SPI_api & spiPtr)
 {
+    SPI_ = &spiPtr;
     unitDB_ = &unitPtr;
     uiPtr_ = &ptr;
     return 0;
