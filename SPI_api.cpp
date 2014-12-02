@@ -1,3 +1,11 @@
+/*
+* File: SPI_api.cpp
+* Description: Implementation for EasyWater8000 spi api
+* Project: PRJ3
+* 
+* Author: Mick Kirkegaard & Poul Overgaard
+*/
+
 #include "SPI_api.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -188,6 +196,9 @@ int SPI_api::config(int unit, float temp, float humi)
 		return -CONF_ERR;
 	}
 
+	/* Close file */
+	close(fp);
+
 	return 0;
 }
 
@@ -296,6 +307,7 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 
 	data = vectorResult;
 
+	/* Close file */
 	close(fp);
 
 	return 0;

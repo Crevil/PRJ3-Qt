@@ -1,3 +1,11 @@
+/*
+* File: SPI_api.h
+* Description: Implementation for EasyWater8000 spi api
+* Project: PRJ3
+* 
+* Author: Mick Kirkegaard & Poul Overgaard
+*/
+
 #include <vector>
 #include <iostream>
 #include <string>
