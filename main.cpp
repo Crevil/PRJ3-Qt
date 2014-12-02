@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     cStatusObj.setUI(UIObj);
     cOnOffObj.setUI(UIObj, unitDBObj, spiObj);
     cAddRemoveObj.setUI(UIObj, unitDBObj, spiObj);
-    cConfigObj.setUI(UIObj);
+    cConfigObj.setUI(UIObj, unitDBObj, spiObj);
     cLogViewObj.setUI(UIObj, logObj);
 
 

@@ -17,7 +17,6 @@ public:
     explicit winConfigPar(QWidget *parent = 0);
     ~winConfigPar();
 
-    QComboBox * getBane();
     QSpinBox * getTemp();
     QSpinBox * getHumi();
 

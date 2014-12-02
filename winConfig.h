@@ -21,8 +21,12 @@ public:
 
     QTableWidget * getTable();
 
+    int row_;
+    int column_;
+
 public slots:
     void on_bAbort_clicked();
+    void on_tUnits_cellPressed(int row, int column);
 
 private:
     Ui::winConfig *ui;

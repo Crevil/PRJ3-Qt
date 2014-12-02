@@ -10,6 +10,7 @@ UI::UI() : QMainWindow()
     winStack_.addWidget(&winOnOffObj_);
     winStack_.addWidget(&winConfigObj_);
     winStack_.addWidget(&winConfigParObj_);
+    winStack_.addWidget(&winAddRemoveParObj_);
     winStack_.addWidget(&winLogObj_);
 
     // Set main as front
@@ -63,6 +64,12 @@ winLog * UI::getWinLog()
     return &winLogObj_;
 }
 
+winConfig * UI::getWinConfig()
+{
+    return &winConfigObj_;
+}
+
+
 winAddRemove * UI::getWinAddRemove()
 {
     return &winAddRemoveObj_;
@@ -71,6 +78,11 @@ winAddRemove * UI::getWinAddRemove()
 winConfigPar * UI::getWinConfigPar()
 {
     return &winConfigParObj_;
+}
+
+winAddRemovePar * UI::getWinAddRemovePar()
+{
+    return &winAddRemoveParObj_;
 }
 
 int UI::setCAddRemove(cAddRemove &ptr)
@@ -146,6 +158,12 @@ int UI::showConfig()
 int UI::showParam()
 {
     winStack_.setCurrentWidget(&winConfigParObj_);
+    return 0;
+}
+
+int UI::showAddRemovePar()
+{
+    winStack_.setCurrentWidget(&winAddRemoveParObj_);
     return 0;
 }
 

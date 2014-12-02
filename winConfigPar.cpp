@@ -15,11 +15,6 @@ winConfigPar::~winConfigPar()
     delete ui;
 }
 
-QComboBox * winConfigPar::getBane()
-{
-    return ui->cbBane;
-}
-
 QSpinBox * winConfigPar::getTemp()
 {
     return ui->sbTemp;
@@ -43,5 +38,5 @@ void winConfigPar::on_bAbort_clicked()
 void winConfigPar::on_bSave_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
-    ui->getCAddRemove()->add();
+    ui->getCConfig()->config();
 }

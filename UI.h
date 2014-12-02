@@ -12,6 +12,7 @@
 #include "winAddRemove.h"
 #include "winConfig.h"
 #include "winConfigPar.h"
+#include "winAddRemovePar.h"
 #include "winLog.h"
 
 // Controllers
@@ -50,6 +51,8 @@ public:
     winOnOff * getWinOnOff();
     winLog * getWinLog();
     winAddRemove * getWinAddRemove();
+    winAddRemovePar * getWinAddRemovePar();
+    winConfig * getWinConfig();
     winConfigPar * getWinConfigPar();
 
     // Utility setters / getters
@@ -64,6 +67,7 @@ public:
     int showAddRemove();
     int showConfig();
     int showParam();
+    int showAddRemovePar();
     int showLog();
 
 private:
@@ -77,6 +81,7 @@ private:
     winAddRemove winAddRemoveObj_;
     winConfig winConfigObj_;
     winConfigPar winConfigParObj_;
+    winAddRemovePar winAddRemoveParObj_;
     winLog winLogObj_;
 
     // Controller pointers

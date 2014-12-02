@@ -25,7 +25,7 @@ QTableWidget * winAddRemove::getTable()
 void winAddRemove::on_bAdd_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
-    ui->showParam();
+    ui->showAddRemovePar();
 }
 
 void winAddRemove::on_bRemove_clicked()

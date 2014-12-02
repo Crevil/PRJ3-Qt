@@ -33,7 +33,8 @@ SOURCES += main.cpp \
     log.cpp \
     unitDB.cpp \
     cLoadData.cpp \
-    SPI_api.cpp
+    SPI_api.cpp \
+    winAddRemovePar.cpp
 
 HEADERS  += \
     winMain.h \
@@ -52,7 +53,8 @@ HEADERS  += \
     log.h \
     unitDB.h \
     cLoadData.h \
-    SPI_api.h
+    SPI_api.h \
+    winAddRemovePar.h
 
 FORMS    += \
     winMain.ui \
@@ -61,4 +63,5 @@ FORMS    += \
     winAddRemove.ui \
     winStatus.ui \
     winLog.ui \
-    winConfigPar.ui
+    winConfigPar.ui \
+    winAddRemovePar.ui
