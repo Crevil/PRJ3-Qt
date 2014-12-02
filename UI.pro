@@ -31,7 +31,8 @@ SOURCES += main.cpp \
     cStatus.cpp \
     cLogView.cpp \
     log.cpp \
-    unitDB.cpp
+    unitDB.cpp \
+    cLoadData.cpp
 
 HEADERS  += \
     winMain.h \
@@ -48,7 +49,8 @@ HEADERS  += \
     cStatus.h \
     cLogView.h \
     log.h \
-    unitDB.h
+    unitDB.h \
+    cLoadData.h
 
 FORMS    += \
     winMain.ui \

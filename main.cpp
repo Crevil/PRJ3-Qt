@@ -1,4 +1,6 @@
 #include <QApplication>
+#include <QThread>
+
 //#include "UI.h"    // UI controller
 
 // Controllers
@@ -6,6 +8,9 @@
 #include "cOnOff.h"
 #include "cAddRemove.h"
 #include "cConfig.h"
+#include "cLoadData.h"
+
+// Domains
 #include "unitDB.h"
 
 
@@ -21,13 +26,17 @@ int main(int argc, char *argv[])
     cConfig cConfigObj;
     cLogView cLogViewObj;
 
-    // Create unitDB
-    unitDB unitDBObj;
+    // Create controller loadData in new thread
+    cLoadData cLoadDataObj;
+    QThread * cLoadDataT = new QThread;     // Create thread
+    cLoadDataObj.moveToThread(cLoadDataT);  // Move controller object to thread
+    cLoadDataT->start();                    // Start thread
 
-    // Create log
-    log logObj;
+    // Create domain classes
+    unitDB unitDBObj;   // unitDB
+    log logObj;         // log
 
-    // Create UI
+
     UI UIObj;
 
     // Set association pointers in UI object
