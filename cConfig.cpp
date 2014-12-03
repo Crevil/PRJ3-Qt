@@ -67,8 +67,9 @@ int cConfig::config()
     QSpinBox * tempPtr = uiPtr_->getWinConfigPar()->getTemp();
     QSpinBox * humiPtr = uiPtr_->getWinConfigPar()->getHumi();
 
-    int row = uiPtr_->getWinConfig()->row_;
-    row++;
+    QTableWidget * myTable = uiPtr_->getWinConfig()->getTable();
+
+    int row = myTable->currentRow();
 
     int temp = tempPtr->value();
     int humi = humiPtr->value();
@@ -77,16 +78,13 @@ int cConfig::config()
     QString sHumi = QString::number(humi);
 
     // FINDING UNIT AT THAT ROW
-    QTableWidget * myTable = uiPtr_->getWinConfig()->getTable();
-
-    QTableWidgetItem * unitNr = myTable->itemAt(row, 0);
-    QTableWidgetItem * unitTemp = myTable->itemAt(row, 1);
-    QTableWidgetItem * unitHumi = myTable->itemAt(row, 2);
+    QTableWidgetItem * unitNr = myTable->item(row, 0);
+    QTableWidgetItem * unitTemp = myTable->item(row, 1);
+    QTableWidgetItem * unitHumi = myTable->item(row, 2);
 
     unitTemp->setText(sTemp);
     unitHumi->setText(sHumi);
 
-    //myTable->editItem();
 
     // CONFIGURATING UNIT
 //    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
@@ -97,11 +95,18 @@ int cConfig::config()
 //            return 0;
 //        }
 
-    QVector<QString> vec;
 
-    vec.push_front(QString::number(row + 1));
-    vec.push_back(QString::number(temp));
-    vec.push_back(QString::number(humi));
+    int index = unitNr->text().toInt();
+
+    // HENT UNITS
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+    unitsPtr_->getUnits( uPtr );
+
+    QVector<QString> vec = uPtr->at(index - 1);
+
+    vec.operator[](1) = sTemp;
+    vec.operator[](2)= sHumi;
+
     unitsPtr_->saveUnit(vec);
 
     this->menuConfig();

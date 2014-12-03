@@ -24,12 +24,24 @@ QListWidget * winOnOff::getList()
 //
 void winOnOff::on_bOn_clicked()
 {
+    int row = ui->list->currentRow();
+    QListWidgetItem * test = ui->list->item(row);
+
+    if(!test || test->text().isEmpty())
+        return;
+
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->getCOnOff()->On();
 }
 
 void winOnOff::on_bOff_clicked()
 {
+    int row = ui->list->currentRow();
+    QListWidgetItem * test = ui->list->item(row);
+
+    if(!test || test->text().isEmpty())
+        return;
+
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->getCOnOff()->Off();
 }

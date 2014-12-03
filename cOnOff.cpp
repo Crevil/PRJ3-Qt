@@ -6,17 +6,37 @@ cOnOff::cOnOff()
 
 int cOnOff::menuOnOff() const
 {
-    // unitDB_->getUnits();
-
     QListWidget * myList = uiPtr_->getWinOnOff()->getList();
 
-    for(int i = 1; i < 5; i++)
+    // HENT UNITS
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+    unitsPtr_->getUnits( uPtr );
+
+    QVector<QVector<QListWidgetItem *> *> * allUnits = new QVector<QVector<QListWidgetItem *> *>;
+
+    QString minus = QString::number(-1);
+
+    for(int i = 0; i < uPtr->size(); i++)
     {
-        QString string = QString::number(i);
-        string.prepend("bane ");
-        string.append("  [Deaktiv]");
-        myList->addItem( string);
+        allUnits->push_front(new QVector<QListWidgetItem *>);
+
+        QVector<QString> vec = uPtr->at(i);
+
+        if(vec.at(2)  != minus )
+        {
+            QVector<QListWidgetItem *> * uItem = allUnits->at(i);
+
+            uItem->push_front(new QListWidgetItem());
+
+            QString string = vec.at(0);
+            QString status = vec.at(3);
+            string.append(status);
+            string.prepend("Bane ");
+            uItem->at(0)->setText(string);
+            myList->addItem(string);
+        }
     }
+
     uiPtr_->showOnOff();
     return 0;
 }
@@ -36,21 +56,33 @@ int cOnOff::On() const
 
     int row = myList->currentRow();
 
-    int error = SPI_->activate( row + 1);
+    QListWidgetItem * item = myList->item(row);
+    QString unitNr = item->text().mid(4, 3);
 
+    int indexNr = unitNr.toInt();
+
+    // SPI KONTROL
+   // int error = SPI_->activate( indexNr );
+        int error = 0; // DELETE THIS
     if(error == 0)
     {
-        QListWidgetItem * item = myList->item(row);
+        // HENT UNITS
+        QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+        unitsPtr_->getUnits( uPtr );
 
-        QString string = QString::number(row +1);
-        string.prepend("bane ");
-        string.append("  [Aktiv]");
+        QVector<QString> vec = uPtr->at(indexNr - 1);
+
+        vec.operator[](3) = " [Aktiv]";
+
+        unitsPtr_->saveUnit(vec);
+
+        QString string = vec.at(0);
+        string.prepend("Bane ");
+        string.append(" [Aktiv]");
         item->setText(string);
     }
 
-
     return 0;
-
 }
 
 int cOnOff::Off() const
@@ -59,16 +91,29 @@ int cOnOff::Off() const
 
     int row = myList->currentRow();
 
-    // ACTIVATING
-    int error = SPI_->deactivate( row + 1);
+    QListWidgetItem * item = myList->item(row);
+    QString unitNr = item->text().mid(4, 3);
 
+    int indexNr = unitNr.toInt();
+
+    // SPI KONTROL
+   // int error = SPI_->deactivate( indexNr );
+        int error = 0; // DELETE THIS
     if(error == 0)
     {
-        QListWidgetItem * item = myList->item(row);
+        // HENT UNITS
+        QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+        unitsPtr_->getUnits( uPtr );
 
-        QString string = QString::number(row +1);
-        string.prepend("bane ");
-        string.append("  [Deaktiv]");
+        QVector<QString> vec = uPtr->at(indexNr - 1);
+
+        vec.operator[](3) = " [Deaktiv]";
+
+        unitsPtr_->saveUnit(vec);
+
+        QString string = vec.at(0);
+        string.prepend("Bane ");
+        string.append(" [Deaktiv]");
         item->setText(string);
     }
 
@@ -78,7 +123,7 @@ int cOnOff::Off() const
 int cOnOff::setUI(UI &ptr, unitDB & unitPtr, SPI_api & spiPtr)
 {
     SPI_ = &spiPtr;
-    unitDB_ = &unitPtr;
+    unitsPtr_ = &unitPtr;
     uiPtr_ = &ptr;
     return 0;
 }

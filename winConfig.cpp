@@ -1,6 +1,7 @@
 #include "winConfig.h"
 #include "ui_winConfig.h"
 #include "UI.h"
+#include <iostream>
 
 winConfig::winConfig(QWidget *parent) :
     QWidget(parent),
@@ -28,17 +29,13 @@ void winConfig::on_bAbort_clicked()
     ui->showMain();
 }
 
-void winConfig::on_tUnits_cellPressed (int row, int column)
+void winConfig::on_tUnits_cellClicked (int row, int dummy)
 {
-    row_ = row;
-    column_ = column;
-    QTableWidgetItem * unitHumi = ui->tUnits->itemAt(row, 2);
-    QString tester = unitHumi->text();
-    int test = tester.toInt();
-    if(test < 0 | test > 100)
+    QTableWidgetItem * unitHumi = ui->tUnits->item(row, 2);
+
+    if(!unitHumi || unitHumi->text().isEmpty())
         return;
 
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->showParam();
-
 }

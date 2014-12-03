@@ -20,7 +20,7 @@ public:
     int setUI(UI & ptr, unitDB & unitPtr, SPI_api & spiPtr);
 private:
     UI * uiPtr_;
-    unitDB * unitDB_;
+    unitDB * unitsPtr_;
     SPI_api * SPI_;
 };
 

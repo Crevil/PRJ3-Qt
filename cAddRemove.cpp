@@ -111,6 +111,10 @@ int cAddRemove::add()
     int temp = tempPtr->value();
     int humi = humiPtr->value();
 
+    QString sTemp = QString::number(temp);
+    QString sHumi = QString::number(humi);
+
+
     // CONFIGURATING UNIT
 //    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
 //        if( config != 0)
@@ -120,11 +124,16 @@ int cAddRemove::add()
 //            return 0;
 //        }
 
-    QVector<QString> vec;
+    // HENT UNITS
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+    unitsPtr_->getUnits( uPtr );
 
-    vec.push_front(string);
-    vec.push_back(QString::number(temp));
-    vec.push_back(QString::number(humi));
+    int row = string.toInt();
+    QVector<QString> vec = uPtr->at(row-1);
+
+    vec.operator[](1) = sTemp;
+    vec.operator[](2)= sHumi;
+
     unitsPtr_->saveUnit(vec);
 
     this->menuAddRemove();
