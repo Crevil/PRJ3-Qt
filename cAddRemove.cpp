@@ -82,6 +82,23 @@ int cAddRemove::remove()
 
     int row = myTable->currentRow();
 
+    QTableWidgetItem * unitNr = myTable->item(row, 0);
+    int index = unitNr->text().toInt();
+
+    // HENT UNITS
+    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+    unitsPtr_->getUnits( uPtr );
+
+    QVector<QString> vec = uPtr->at(index - 1);
+
+    QString minus = QString::number(-1);
+
+    vec.operator[](1) = minus;
+    vec.operator[](2)= minus;
+    vec.operator[](3)= " [Deaktiv]";
+
+    unitsPtr_->saveUnit(vec);
+
     for(int i = 0; i < 3; i++)
     {
         QTableWidgetItem * item = myTable->item(row, i);
