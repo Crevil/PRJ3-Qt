@@ -54,6 +54,7 @@ public:
     winAddRemovePar * getWinAddRemovePar();
     winConfig * getWinConfig();
     winConfigPar * getWinConfigPar();
+    winStatus * getWinStatus();
 
     // Utility setters / getters
     int setCurrent(QWidget *);

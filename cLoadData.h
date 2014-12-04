@@ -3,14 +3,28 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QVector>
+#include <QString>
+#include <QDebug>
+
+#include <vector>
+#include <string>
+#include <iostream>
+
+#include "SPI_api.h"
+#include "log.h"
+
 #define GETDATATIMEOUT 2    // in sec
 
 class cLoadData : public QObject
 {
     Q_OBJECT
 public:
-    explicit cLoadData(QObject *parent = 0);
+    explicit cLoadData(SPI_api * SPIPtr, log * logPtr, QObject *parent = 0);
     ~cLoadData();
+private:
+    SPI_api * SPI_apiPtr_;
+    log * logPtr_;
 
 signals:
 

@@ -22,3 +22,11 @@ void winStatus::on_bAbort_clicked()
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->showMain();
 }
+
+//
+// Getters
+//
+Ui::winStatus * winStatus::getUI()
+{
+    return ui;
+}

@@ -84,6 +84,15 @@ winAddRemovePar * UI::getWinAddRemovePar()
 {
     return &winAddRemoveParObj_;
 }
+winStatus * UI::getWinStatus()
+{
+    return &winStatusObj_;
+}
+
+
+//
+// Controllers
+//
 
 int UI::setCAddRemove(cAddRemove &ptr)
 {

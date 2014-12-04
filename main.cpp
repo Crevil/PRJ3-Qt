@@ -32,18 +32,18 @@ int main(int argc, char *argv[])
     cConfig cConfigObj;
     cLogView cLogViewObj;
 
-    // Create controller loadData in new thread
-    cLoadData cLoadDataObj;
-    QThread * cLoadDataT = new QThread;     // Create thread
-    cLoadDataObj.moveToThread(cLoadDataT);  // Move controller object to thread
-    cLoadDataT->start();                    // Start thread
-
     // Create domain classes
     unitDB unitDBObj;   // unitDB
     log logObj;         // log
 
     // Create SPI class
     SPI_api spiObj;
+
+    // Create controller loadData in new thread
+    cLoadData cLoadDataObj(&spiObj, &logObj);
+    QThread * cLoadDataT = new QThread;     // Create thread
+    cLoadDataObj.moveToThread(cLoadDataT);  // Move controller object to thread
+    cLoadDataT->start();                    // Start thread
 
 
     UI UIObj;

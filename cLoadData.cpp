@@ -1,7 +1,7 @@
 #include "cLoadData.h"
 
-cLoadData::cLoadData(QObject *parent) :
-    QObject(parent)
+cLoadData::cLoadData(SPI_api * SPIPtr, log * logPtr, QObject *parent) :
+    QObject(parent), SPI_apiPtr_(SPIPtr), logPtr_(logPtr)
 {
     qDebug("cLoadData(): Called");
 
@@ -21,5 +21,28 @@ cLoadData::~cLoadData()
 void cLoadData::getData()
 {
     qDebug("cLoadData.getLog(): Called");
+
+    // Create temp Qstring vector
+    std::vector<std::string> tempVec;
+
+    // Get data from SPI
+    SPI_apiPtr_->getLog(tempVec, NULL, 0);   // Last two arguments are dummy
+
+    // Convert data from std::vector<string> to QVector<QString>
+    QVector<QString> tempQVecData;
+    QVector<QString> tempQVecErr;
+    QString tempQString;
+
+    for(unsigned int i = 0; i < tempVec.size(); i++)
+    {
+        tempQString = QString::fromStdString(tempVec[i]);
+        if(tempQString[0] == 'D')   // Save only data
+            tempQVecData.push_back(tempQString);
+        else
+            tempQVecErr.push_back(tempQString);
+    }
+
+    // Send data to log
+    logPtr_->saveLog(tempQVecData);
 }
 

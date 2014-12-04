@@ -15,6 +15,8 @@ public:
     explicit winStatus(QWidget *parent = 0);
     ~winStatus();
 
+    Ui::winStatus * getUI();
+
 public slots:
     void on_bAbort_clicked();
 

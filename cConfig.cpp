@@ -110,4 +110,5 @@ int cConfig::config()
     unitsPtr_->saveUnit(vec);
 
     this->menuConfig();
+    return 0;
 }

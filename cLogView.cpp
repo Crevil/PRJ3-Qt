@@ -30,7 +30,7 @@ int cLogView::menuLog() const
                 string.append(" %");
 
             if(t == 0)
-                string.append(" C");
+                string.append(" \260C");
 
             // doesnt work ( °C )
 
