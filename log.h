@@ -11,11 +11,11 @@ public:
 
     int saveLog( QVector<QString> log );
     int getLog( QVector<QVector<QString> > * log );
-    int getLatest( QVector< QString > & log);
+    int getLatest( QVector< QString > * log);
 
 private:
     QVector<QVector<QString> > * log_;
-    QVector<QString> latest_;
+    QVector<QString> * latest_;
 };
 
 #endif // LOG_H

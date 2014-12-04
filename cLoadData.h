@@ -14,7 +14,7 @@
 #include "SPI_api.h"
 #include "log.h"
 
-#define GETDATATIMEOUT 2    // in sec
+#define GETDATATIMEOUT 6    // in sec
 
 class cLoadData : public QObject
 {

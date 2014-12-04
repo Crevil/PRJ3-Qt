@@ -62,8 +62,8 @@ int cOnOff::On() const
     int indexNr = unitNr.toInt();
 
     // SPI KONTROL
-   // int error = SPI_->activate( indexNr );
-        int error = 0; // DELETE THIS
+    int error = SPI_->activate( indexNr );
+        //int error = 0; // DELETE THIS
     if(error == 0)
     {
         // HENT UNITS
@@ -81,6 +81,8 @@ int cOnOff::On() const
         string.append(" [Aktiv]");
         item->setText(string);
     }
+    else
+         qDebug("activate failed");
 
     return 0;
 }
@@ -97,8 +99,8 @@ int cOnOff::Off() const
     int indexNr = unitNr.toInt();
 
     // SPI KONTROL
-   // int error = SPI_->deactivate( indexNr );
-        int error = 0; // DELETE THIS
+    int error = SPI_->deactivate( indexNr );
+       // int error = 0; // DELETE THIS
     if(error == 0)
     {
         // HENT UNITS
@@ -116,6 +118,8 @@ int cOnOff::Off() const
         string.append(" [Deaktiv]");
         item->setText(string);
     }
+    else
+        qDebug("deactivate failed");
 
     return 0;
 }

@@ -1,6 +1,6 @@
 #include "cAddRemove.h"
 #include <iostream>
-
+#include "QDebug"
 cAddRemove::cAddRemove()
 {
 
@@ -117,13 +117,14 @@ int cAddRemove::add()
     QString string = banePtr->currentText();
 
     // VERIFY
-//    int verify = SPI_->verify( string.toInt());
-//    if( verify != 0)
-//    {
-//        qDebug("VERIFY ERROR");
-//        uiPtr_->showAddRemove();
-//        return 0;
-//    }
+    int verify = SPI_->verify(1);
+    qDebug() << verify;
+    if( verify != 0)
+    {
+        qDebug("VERIFY ERROR");
+        uiPtr_->showAddRemove();
+        return 0;
+    }
 
     int temp = tempPtr->value();
     int humi = humiPtr->value();
@@ -133,13 +134,13 @@ int cAddRemove::add()
 
 
     // CONFIGURATING UNIT
-//    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
-//        if( config != 0)
-//        {
-//            qDebug("CONFIG ERROR");
-//            uiPtr_->showAddRemove();
-//            return 0;
-//        }
+    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
+        if( config != 0)
+        {
+            qDebug("CONFIG ERROR");
+            uiPtr_->showAddRemove();
+            return 0;
+        }
 
     // HENT UNITS
     QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;

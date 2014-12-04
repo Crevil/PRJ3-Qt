@@ -1,7 +1,8 @@
 #include "log.h"
 #include <iostream>
+#include "QDebug"
 
-log::log() : log_(new QVector<QVector<QString> >)
+log::log() : log_(new QVector<QVector<QString> >), latest_(new QVector<QString>)
 {
     // test log
 
@@ -20,14 +21,19 @@ log::log() : log_(new QVector<QVector<QString> >)
     pushThis.push_front(QString::number(89));
     pushThis.push_front(QString::number(32.1));
 
-    latest_ = pushThis;
+    for(int i = 0; i < 4; i++)
+    {
+       latest_->push_back(pushThis.at(i));
+    }
     log_->push_front(pushThis);
 }
 
 int log::saveLog( QVector<QString> saveThis)
 {
         log_->push_front(saveThis);
-        latest_ = saveThis;
+        *latest_ = saveThis;
+        qDebug() << saveThis;
+        qDebug("saved log");
         return 0;
 }
 
@@ -38,9 +44,9 @@ int log::getLog( QVector<QVector<QString> > * saveHere )
     return 0;
 }
 
-int log::getLatest( QVector< QString > & saveHere)
+int log::getLatest( QVector< QString > * saveHere)
 {
-    saveHere = latest_;
+   *saveHere = *latest_;
 
     return 0;
 }

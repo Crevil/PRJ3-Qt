@@ -20,13 +20,17 @@ cLoadData::~cLoadData()
 // Thread function
 void cLoadData::getData()
 {
-    qDebug("cLoadData.getLog(): Called");
+    qDebug("cLoadData.getData(): Called");
 
     // Create temp Qstring vector
     std::vector<std::string> tempVec;
 
     // Get data from SPI
-    SPI_apiPtr_->getLog(tempVec, NULL, 0);   // Last two arguments are dummy
+    int test = SPI_apiPtr_->getLog(tempVec, NULL, 0);   // Last two arguments are dummy
+
+
+    if(test != 0 || tempVec.size() == 0)
+        return;
 
     // Convert data from std::vector<string> to QVector<QString>
     QVector<QString> tempQVecData;
@@ -43,6 +47,8 @@ void cLoadData::getData()
     }
 
     // Send data to log
+    qDebug("size after copy");
+    qDebug() << tempVec.size();
     logPtr_->saveLog(tempQVecData);
 }
 

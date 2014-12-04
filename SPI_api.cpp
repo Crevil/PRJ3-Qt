@@ -10,6 +10,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+#include "QDebug"
+
 static char CMD_ACT[] = "A"; // Activate
 static char CMD_DEA[] = "D"; // Deactivate
 static char CMD_VER[] = "V"; // Verify
@@ -118,6 +120,9 @@ int SPI_api::verify(int unit) const
 		close(fp);
 		return -VER_ERR;
 	}
+
+    qDebug("result fra read:");
+    qDebug() << result;
 
 	/* Parse char result to int */
 	verifyResult = (result - '0');
@@ -243,9 +248,12 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 
 	//printf("charArrayLen: char = %c and int = %d \n", charArrayLen, charArrayLen);
 
+
+    qDebug() << charArrayLen;
 	/* Vector Builder looking for D's or E's */
 	for(i = 1 ; i < charArrayLen ; i++){
 		err = read(fp, &charResult, dataLen);
+        qDebug("FOR LOOP");
 		if(err < 0){
 			printf("READ ERROR: %d\n", err);
 			close(fp);
@@ -286,14 +294,14 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 				if(err < 0){
 					printf("READ ERROR: %d\n", err);
 					close(fp);
-					return -LOG_ERR;
+                    return -LOG_ERR;
 				}
 				stringErrorResult.push_back(charResult);
 
 				// Error handling, prevent to read on non-existing data
 				if(i >= (charArrayLen-1)){
 					printf("Error in buffer from unit\n");
-					return -LOG_ERR;
+                    return -LOG_ERR;
 				}
 
 				i++;	// Increment 1st for-loop counter
@@ -306,7 +314,8 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 	}
 
 	data = vectorResult;
-
+    qDebug("end of SPI: vector size inc:");
+     qDebug() << vectorResult.size();
 	/* Close file */
 	close(fp);
 

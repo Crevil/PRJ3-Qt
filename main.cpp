@@ -36,10 +36,19 @@ int main(int argc, char *argv[])
     unitDB unitDBObj;   // unitDB
     log logObj;         // log
 
+    QVector<QString> data;
+    logObj.getLatest(&data);
+    qDebug() << data;
+    data.operator[](2) = QString::number(99);
+    logObj.saveLog(data);
+
+    logObj.getLatest(&data);
+    qDebug() << data;
+
     // Create SPI class
     SPI_api spiObj;
 
-    // Create controller loadData in new thread
+     //Create controller loadData in new thread
     cLoadData cLoadDataObj(&spiObj, &logObj);
     QThread * cLoadDataT = new QThread;     // Create thread
     cLoadDataObj.moveToThread(cLoadDataT);  // Move controller object to thread
@@ -57,6 +66,7 @@ int main(int argc, char *argv[])
 
     // Set association pointers in controller objects
     cStatusObj.setUI(UIObj);
+    cStatusObj.setLog(logObj);
     cOnOffObj.setUI(UIObj, unitDBObj, spiObj);
     cAddRemoveObj.setUI(UIObj, unitDBObj, spiObj);
     cConfigObj.setUI(UIObj, unitDBObj, spiObj);
