@@ -163,7 +163,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Bane:</string>
+    <string>Hul</string>
    </property>
   </widget>
   <widget class="QComboBox" name="cbBane">

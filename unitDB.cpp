@@ -22,7 +22,7 @@ unitDB::unitDB() : unitDB_(new QVector<QVector<QString > >)
     QString str2 = QString::number(52);
     QString str3 = " [Aktiv]";
 
-    int b = 1;
+    int b = 0;
     unitDB_->operator[](b).operator[](1) = str1;
     unitDB_->operator[](b).operator[](2) = str2;
     unitDB_->operator[](b).operator[](3) = str3;

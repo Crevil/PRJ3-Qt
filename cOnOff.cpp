@@ -31,7 +31,7 @@ int cOnOff::menuOnOff() const
             QString string = vec.at(0);
             QString status = vec.at(3);
             string.append(status);
-            string.prepend("Bane ");
+            string.prepend("Hul ");
             uItem->at(0)->setText(string);
             myList->addItem(string);
         }
@@ -77,7 +77,7 @@ int cOnOff::On() const
         unitsPtr_->saveUnit(vec);
 
         QString string = vec.at(0);
-        string.prepend("Bane ");
+        string.prepend("Hul ");
         string.append(" [Aktiv]");
         item->setText(string);
     }
@@ -114,7 +114,7 @@ int cOnOff::Off() const
         unitsPtr_->saveUnit(vec);
 
         QString string = vec.at(0);
-        string.prepend("Bane ");
+        string.prepend("Hul ");
         string.append(" [Deaktiv]");
         item->setText(string);
     }

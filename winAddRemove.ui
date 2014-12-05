@@ -101,7 +101,7 @@
     <rect>
      <x>10</x>
      <y>90</y>
-     <width>457</width>
+     <width>461</width>
      <height>141</height>
     </rect>
    </property>
@@ -112,7 +112,7 @@
     <number>18</number>
    </property>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>147</number>
+    <number>146</number>
    </attribute>
    <attribute name="verticalHeaderVisible">
     <bool>false</bool>
@@ -209,7 +209,7 @@
    </row>
    <column>
     <property name="text">
-     <string>Bane</string>
+     <string>Hul</string>
     </property>
    </column>
    <column>
