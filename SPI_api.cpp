@@ -253,7 +253,6 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 	/* Vector Builder looking for D's or E's */
 	for(i = 1 ; i < charArrayLen ; i++){
 		err = read(fp, &charResult, dataLen);
-        qDebug("FOR LOOP");
 		if(err < 0){
 			printf("READ ERROR: %d\n", err);
 			close(fp);
@@ -273,7 +272,7 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 				stringDataResult.push_back(charResult);
 
 				// Error handling, prevent to read on non-existing data
-				if(i >= (charArrayLen-1)){
+                if(i > (charArrayLen-1)){
 					printf("Error in buffer from unit\n");
 					return -LOG_ERR;
 				}
@@ -299,7 +298,7 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 				stringErrorResult.push_back(charResult);
 
 				// Error handling, prevent to read on non-existing data
-				if(i >= (charArrayLen-1)){
+                if(i > (charArrayLen-1)){
 					printf("Error in buffer from unit\n");
                     return -LOG_ERR;
 				}
@@ -314,8 +313,6 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 	}
 
 	data = vectorResult;
-    qDebug("end of SPI: vector size inc:");
-     qDebug() << vectorResult.size();
 	/* Close file */
 	close(fp);
 

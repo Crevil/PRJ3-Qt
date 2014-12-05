@@ -71,7 +71,7 @@
    </property>
    <widget class="QWidget" name="tabAll">
     <attribute name="title">
-     <string>Alle</string>
+     <string>Enhed 1</string>
     </attribute>
     <widget class="QTableWidget" name="tAll">
      <property name="geometry">
@@ -107,12 +107,12 @@
      </column>
      <column>
       <property name="text">
-       <string>Bevægelse</string>
+       <string>Sprinkler</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Sprinkler</string>
+       <string>Bevægelse</string>
       </property>
      </column>
     </widget>

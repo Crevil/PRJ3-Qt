@@ -87,13 +87,13 @@ int cConfig::config()
 
 
     // CONFIGURATING UNIT
-//    int config = SPI_->config(string.toInt(), (float)temp, (float)humi);
-//        if( config != 0)
-//        {
-//            qDebug("CONFIG ERROR");
-//            uiPtr_->showAddRemove();
-//            return 0;
-//        }
+    int config = SPI_->config(unitNr->text().toInt(), (float)temp, (float)humi);
+        if( config != 0)
+        {
+            qDebug("CONFIG ERROR");
+            uiPtr_->showAddRemove();
+            return 0;
+        }
 
 
     int index = unitNr->text().toInt();

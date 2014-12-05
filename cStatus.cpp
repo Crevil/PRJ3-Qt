@@ -11,17 +11,28 @@ int cStatus::menuStatus() const
 
     QVector<QString> data;
     logPtr_->getLatest(&data);
- qDebug("got data, maybe");
-    uiElements->tTemp->setText(data.at(0));
-            qDebug("1");
-    uiElements->tHumi->setText(data.at(1));
-            qDebug("2");
-    uiElements->tMove->setText((data.at(2) == "0") ? "Ingen" : "Nogen");
-                               qDebug("3");
-    uiElements->tSprink->setText((data.at(3) == "0") ? "Slukket" : "Tændt");
-                                 qDebug("1");
 
-    uiPtr_->showStatus();
+    if(data.size() != 0)
+    {
+        uiElements->tTemp->setEnabled(1);
+        uiElements->tHumi->setEnabled(1);
+        uiElements->tMove->setEnabled(1);
+        uiElements->tSprink->setEnabled(1);
+        uiElements->tTemp->setText(data.at(0) + " \260C");
+        uiElements->tHumi->setText(data.at(1) + " %");
+        uiElements->tMove->setText((data.at(2) == "0") ? "Ingen" : "Nogen");
+        uiElements->tSprink->setText((data.at(3) == "0") ? "Slukket" : QString::fromUtf8("Tændt"));
+    }
+    else
+    {
+        uiElements->tTemp->setEnabled(0);
+        uiElements->tHumi->setEnabled(0);
+        uiElements->tMove->setEnabled(0);
+        uiElements->tSprink->setEnabled(0);
+    }
+
+        uiPtr_->showStatus();
+
 
     return 0;
 }

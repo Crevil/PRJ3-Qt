@@ -36,15 +36,6 @@ int main(int argc, char *argv[])
     unitDB unitDBObj;   // unitDB
     log logObj;         // log
 
-    QVector<QString> data;
-    logObj.getLatest(&data);
-    qDebug() << data;
-    data.operator[](2) = QString::number(99);
-    logObj.saveLog(data);
-
-    logObj.getLatest(&data);
-    qDebug() << data;
-
     // Create SPI class
     SPI_api spiObj;
 

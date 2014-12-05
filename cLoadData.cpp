@@ -1,4 +1,5 @@
 #include "cLoadData.h"
+#include "QRegExp"
 
 cLoadData::cLoadData(SPI_api * SPIPtr, log * logPtr, QObject *parent) :
     QObject(parent), SPI_apiPtr_(SPIPtr), logPtr_(logPtr)
@@ -40,15 +41,25 @@ void cLoadData::getData()
     for(unsigned int i = 0; i < tempVec.size(); i++)
     {
         tempQString = QString::fromStdString(tempVec[i]);
+
         if(tempQString[0] == 'D')   // Save only data
-            tempQVecData.push_back(tempQString);
+        {
+           tempQVecData.push_back(tempQString.mid(1, 5));
+           tempQVecData.push_back(tempQString.mid(6, 3));
+           tempQVecData.push_back(tempQString.mid(9, 1));
+           tempQVecData.push_back(tempQString.mid(10, 1));
+           tempQVecData.operator [](0).remove( QRegExp("^[0]*"));
+           tempQVecData.operator [](1).remove( QRegExp("^[0]*"));
+        }
+
+
         else
             tempQVecErr.push_back(tempQString);
     }
 
     // Send data to log
-    qDebug("size after copy");
-    qDebug() << tempVec.size();
+    qDebug("logged data");
+    qDebug() << tempQVecData;
     logPtr_->saveLog(tempQVecData);
 }
 
