@@ -148,24 +148,6 @@
     <string>Gem</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lTemp_2">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>60</y>
-     <width>51</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Hul</string>
-   </property>
-  </widget>
   <widget class="QComboBox" name="cbBane">
    <property name="geometry">
     <rect>
@@ -265,6 +247,24 @@
      <string>18</string>
     </property>
    </item>
+  </widget>
+  <widget class="QLabel" name="lHul">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>60</y>
+     <width>231</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Hul:</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -80,7 +80,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Afbryd</string>
+    <string>Tilbage</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tUnits">
