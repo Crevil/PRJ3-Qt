@@ -85,7 +85,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Øvre temperaturgrænse:</string>
+    <string>Seneste temperatur:</string>
    </property>
   </widget>
   <widget class="QLabel" name="lHumi">
@@ -103,7 +103,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Nedre fugtighedsgrænse:</string>
+    <string>Seneste Fugtighed:</string>
    </property>
   </widget>
   <widget class="QLabel" name="lMove">

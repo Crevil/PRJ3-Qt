@@ -8,6 +8,7 @@ class log
 {
 public:
     log();
+    ~log();
 
     int saveLog( QVector<QString> log );
     int getLog( QVector<QVector<QString> > * log );

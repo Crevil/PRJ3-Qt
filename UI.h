@@ -57,8 +57,6 @@ public:
     winStatus * getWinStatus();
 
     // Utility setters / getters
-    int setCurrent(QWidget *);
-    QWidget * getCurrent();
     QStackedWidget * getStack();
 
     // Show methods

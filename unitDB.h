@@ -15,9 +15,6 @@ public:
 
 private:
     QVector<QVector<QString > > * unitDB_;
-    int max_;
-    int size_;
-
 };
 
 #endif // UNITDB_H
