@@ -30,6 +30,12 @@ void winAddRemove::on_bAdd_clicked()
 
 void winAddRemove::on_bRemove_clicked()
 {
+    int row = ui->tUnits->currentRow();
+    QTableWidgetItem * test = ui->tUnits->item(row, 0);
+
+    if(!test || test->text().isEmpty())
+        return;
+
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
     ui->getCAddRemove()->remove();
 }

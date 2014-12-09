@@ -1,4 +1,5 @@
 #include "cOnOff.h"
+#include "QDebug"
 
 cOnOff::cOnOff()
 {
@@ -57,7 +58,7 @@ int cOnOff::On() const
     int row = myList->currentRow();
 
     QListWidgetItem * item = myList->item(row);
-    QString unitNr = item->text().mid(4, 3);
+    QString unitNr = item->text().mid(3, 3);
 
     int indexNr = unitNr.toInt();
 
@@ -94,7 +95,7 @@ int cOnOff::Off() const
     int row = myList->currentRow();
 
     QListWidgetItem * item = myList->item(row);
-    QString unitNr = item->text().mid(4, 3);
+    QString unitNr = item->text().mid(3, 3);
 
     int indexNr = unitNr.toInt();
 

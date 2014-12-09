@@ -7,6 +7,7 @@ cConfig::cConfig()
 int cConfig::menuConfig() const
 {
     QTableWidget * myTable = uiPtr_->getWinConfig()->getTable();
+    myTable->clearContents();
 
     QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
     unitsPtr_->getUnits( uPtr );
@@ -38,9 +39,7 @@ int cConfig::menuConfig() const
                     string.append(" %");
 
                 if(t == 1)
-                    string.append(" C");
-
-                // doesnt work ( °C )
+                    string.append(" \260C");
 
                 uItem->at(0)->setText(string);
 
@@ -91,7 +90,7 @@ int cConfig::config()
         if( config != 0)
         {
             qDebug("CONFIG ERROR");
-            uiPtr_->showAddRemove();
+            uiPtr_->showConfig();
             return 0;
         }
 

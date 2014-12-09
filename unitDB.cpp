@@ -5,15 +5,15 @@ unitDB::unitDB() : unitDB_(new QVector<QVector<QString > >)
 {
     QString zero = QString::number(0);
     QString minus = QString::number(-1);
-    for(int i = 18; i > 0; i--)
+    for(int i = 1; i <= 18; i++)
     {
         QString init = QString::number(i);
         QVector<QString> temp;
-        temp.push_front(init);
+        temp.push_back(init);
         temp.push_back(minus);
         temp.push_back(minus);
         temp.push_back(" [Deaktiv]");
-        unitDB_->push_front(temp);
+        unitDB_->push_back(temp);
     }
 
     // TEST PURPOSE

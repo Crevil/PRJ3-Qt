@@ -14,7 +14,7 @@ int cAddRemove::menuAddRemove() const
     QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
     unitsPtr_->getUnits( uPtr );
 
-
+    myTable->clearContents();
 
     QVector<QVector<QTableWidgetItem *> *> * allUnits = new QVector<QVector<QTableWidgetItem *> *>;
 
@@ -43,9 +43,7 @@ int cAddRemove::menuAddRemove() const
                     string.append(" %");
 
                 if(t == 1)
-                    string.append(" C");
-
-                // doesnt work ( °C )
+                    string.append(" \260C");
 
                 uItem->at(0)->setText(string);
 
@@ -70,7 +68,6 @@ int cAddRemove::setUI(UI & ptr, unitDB & unitPtr, SPI_api & spiPtr)
 int cAddRemove::menuAbort() const
 {
     QTableWidget * myTable = uiPtr_->getWinAddRemove()->getTable();
-    myTable->clear();
     uiPtr_->showMain();
 
     return 0;
@@ -85,26 +82,26 @@ int cAddRemove::remove()
     QTableWidgetItem * unitNr = myTable->item(row, 0);
     int index = unitNr->text().toInt();
 
-    // HENT UNITS
-    QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
-    unitsPtr_->getUnits( uPtr );
-
-    QVector<QString> vec = uPtr->at(index - 1);
-
-    QString minus = QString::number(-1);
-
-    vec.operator[](1) = minus;
-    vec.operator[](2)= minus;
-    vec.operator[](3)= " [Deaktiv]";
-
-    unitsPtr_->saveUnit(vec);
-
-    for(int i = 0; i < 3; i++)
+    // SPI KONTROL
+    int error = SPI_->deactivate( index );
+       // int error = 0; // DELETE THIS
+    if(error == 0)
     {
-        QTableWidgetItem * item = myTable->item(row, i);
-        delete item;
-    }
+        // HENT UNITS
+        QVector<QVector<QString > > * uPtr = new QVector<QVector<QString> >;
+        unitsPtr_->getUnits( uPtr );
 
+        QVector<QString> vec = uPtr->at(index - 1);
+
+        QString minus = QString::number(-1);
+
+        vec.operator[](1) = minus;
+        vec.operator[](2)= minus;
+        vec.operator[](3)= " [Deaktiv]";
+
+        unitsPtr_->saveUnit(vec);
+    }
+    this->menuAddRemove();
     return 0;
 }
 

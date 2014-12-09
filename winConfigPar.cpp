@@ -32,7 +32,7 @@ QSpinBox * winConfigPar::getHumi()
 void winConfigPar::on_bAbort_clicked()
 {
     UI * ui = (UI *) ((QStackedWidget *) parent())->parent();
-    ui->showMain();
+    ui->showConfig();
 }
 
 void winConfigPar::on_bSave_clicked()

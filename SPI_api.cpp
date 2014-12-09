@@ -110,7 +110,7 @@ int SPI_api::verify(int unit) const
 	if(err < 0){
 		printf("WRITE ERROR: %d\n", err);
 		close(fp);
-		return -VER_ERR;
+        return -VER_ERR+2;
 	}
 
 	/* Read Unit number from target */
@@ -118,7 +118,7 @@ int SPI_api::verify(int unit) const
 	if(err < 0){
 		printf("READ ERROR: %d \n", err);
 		close(fp);
-		return -VER_ERR;
+        return -VER_ERR+3;
 	}
 
     qDebug("result fra read:");
@@ -249,7 +249,7 @@ int SPI_api::getLog(vector<string> &data, int * units, int size)
 	//printf("charArrayLen: char = %c and int = %d \n", charArrayLen, charArrayLen);
 
 
-    qDebug() << charArrayLen;
+    //qDebug() << charArrayLen;
 	/* Vector Builder looking for D's or E's */
 	for(i = 1 ; i < charArrayLen ; i++){
 		err = read(fp, &charResult, dataLen);
